@@ -2,6 +2,8 @@ package pos.model;
 
 import com.google.common.base.Objects;
 
+import pos.utils.Utils;
+
 public class Price {
 
     private int dollar;
@@ -9,8 +11,8 @@ public class Price {
 
     public static class PriceBuilder {
 
-        private int dollar = 0;
-        private int cent = 0;
+        private int dollar = Utils.ZERO;
+        private int cent = Utils.ZERO;
 
         public PriceBuilder dollar(final int dollar) {
             this.dollar = dollar;
@@ -41,7 +43,12 @@ public class Price {
     }
 
     public boolean isNothing() {
-        return this.dollar == 0 && this.cent == 0;
+        return this.dollar == Utils.ZERO && this.cent == Utils.ZERO;
+    }
+
+    public static Price nothing() {
+        return new Price.PriceBuilder().dollar(Utils.ZERO).cent(Utils.ZERO)
+                .build();
     }
 
     public static Price add(Price a, Price b) {
@@ -80,6 +87,7 @@ public class Price {
 
         Price other = (Price) obj;
 
-        return Objects.equal(this.cent, other.cent) && Objects.equal(this.dollar, other.dollar);
+        return Objects.equal(this.cent, other.cent)
+                && Objects.equal(this.dollar, other.dollar);
     }
 }

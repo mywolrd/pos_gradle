@@ -24,20 +24,9 @@ public class ItemTypeTest {
         Assert.assertFalse("Should not equal", type1.equals(type2));
     }
 
-    @Test
-    public void TestEquals_false_null() {
-        ItemType typeNull = new ItemType(null);
-        ItemType type1 = new ItemType(item1);
-
-        Assert.assertFalse("Should not equal", typeNull.equals(type1));
-    }
-
-    @Test
-    public void TestEquals_false_null2() {
-        ItemType typeNull = new ItemType(null);
-        ItemType type1 = new ItemType(item1);
-
-        Assert.assertFalse("Should not equal", type1.equals(typeNull));
+    @Test(expected = RuntimeException.class)
+    public void testNull() {
+        new ItemType(null);
     }
 
 }
