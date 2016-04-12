@@ -3,6 +3,8 @@ package pos.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import pos.model.application.Price;
+
 public class PriceTest {
 
     @Test
@@ -30,7 +32,9 @@ public class PriceTest {
 
         Price result = Price.multiply(a, 5);
 
-        Assert.assertEquals("Dollar amount should match 5", 8, result.getDollar());
-        Assert.assertEquals("Cent amount should match 50", 75, result.getCent());
+        Assert.assertEquals("Dollar amount should match 5", 8,
+                result.getDollar());
+        Assert.assertEquals("Cent amount should match 50", 75,
+                result.getCent());
     }
 }

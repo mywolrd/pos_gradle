@@ -1,4 +1,4 @@
-package pos.model;
+package pos.model.application;
 
 import com.google.common.base.Objects;
 

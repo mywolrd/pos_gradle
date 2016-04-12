@@ -1,4 +1,4 @@
-package pos.model;
+package pos.model.application;
 
 import com.google.common.base.Objects;
 
@@ -90,7 +90,8 @@ public class OrderDetails {
         int result = 1;
         result = prime * result + (int) (id ^ (id >>> 32));
         result = prime * result + ((item == null) ? 0 : item.hashCode());
-        result = prime * result + ((newPrice == null) ? 0 : newPrice.hashCode());
+        result = prime * result
+                + ((newPrice == null) ? 0 : newPrice.hashCode());
         result = prime * result + (int) (orderId ^ (orderId >>> 32));
         result = prime * result + quantity;
         return result;
@@ -106,8 +107,10 @@ public class OrderDetails {
             return false;
         OrderDetails other = (OrderDetails) obj;
 
-        return Objects.equal(other.id, this.id) && Objects.equal(other.quantity, this.quantity)
-                && Objects.equal(other.orderId, this.orderId) && Objects.equal(other.newPrice, this.newPrice)
+        return Objects.equal(other.id, this.id)
+                && Objects.equal(other.quantity, this.quantity)
+                && Objects.equal(other.orderId, this.orderId)
+                && Objects.equal(other.newPrice, this.newPrice)
                 && Objects.equal(other.item, this.item);
     }
 

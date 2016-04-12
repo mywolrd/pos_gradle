@@ -3,6 +3,8 @@ package pos.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import pos.model.application.ItemType;
+
 public class ItemTypeTest {
 
     private String item1 = "ITEM1";

@@ -1,4 +1,4 @@
-package pos.model;
+package pos.model.application;
 
 import com.google.common.base.Objects;
 
@@ -8,6 +8,7 @@ public class Item {
     private ItemType type;
     private String name;
     private Price price;
+    private boolean active;
 
     public static class ItemBuilder {
 
@@ -15,6 +16,7 @@ public class Item {
         private final ItemType type;
         private final Price price;
         private String name;
+        private boolean active;
 
         public ItemBuilder(ItemType type, Price price) {
             this.type = type;
@@ -28,6 +30,11 @@ public class Item {
 
         public ItemBuilder id(long id) {
             this.id = id;
+            return this;
+        }
+
+        public ItemBuilder active(boolean active) {
+            this.active = active;
             return this;
         }
 
@@ -59,6 +66,10 @@ public class Item {
         return price;
     }
 
+    public boolean isActive() {
+        return this.active;
+    }
+
     public String getItemName() {
         if (name != null && name.length() > 0)
             return this.type.getName() + " " + name;
@@ -86,8 +97,10 @@ public class Item {
             return false;
         Item other = (Item) obj;
 
-        return Objects.equal(this.id, other.id) && Objects.equal(this.name, other.name)
-                && Objects.equal(this.price, other.price) && Objects.equal(this.type, other.type);
+        return Objects.equal(this.id, other.id)
+                && Objects.equal(this.name, other.name)
+                && Objects.equal(this.price, other.price)
+                && Objects.equal(this.type, other.type);
     }
 
 }

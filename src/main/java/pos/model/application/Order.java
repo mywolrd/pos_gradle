@@ -1,4 +1,4 @@
-package pos.model;
+package pos.model.application;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,6 +13,7 @@ public class Order {
     private List<OrderDetails> details;
     private LocalDateTime dropDate;
     private LocalDateTime readyDate;
+    private LocalDateTime pickupDate;
 
     public static class OrderBuilder {
 
@@ -20,6 +21,7 @@ public class Order {
         private List<OrderDetails> details;
         private LocalDateTime dropDate;
         private LocalDateTime readyDate;
+        private LocalDateTime pickupDate;
 
         public OrderBuilder details(List<OrderDetails> details) {
             this.details = details;
@@ -36,6 +38,11 @@ public class Order {
             return this;
         }
 
+        public OrderBuilder pickupDate(LocalDateTime pickupDate) {
+            this.pickupDate = pickupDate;
+            return this;
+        }
+
         public Order build() {
             return new Order(this);
         }
@@ -46,6 +53,7 @@ public class Order {
         this.details = builder.details;
         this.dropDate = builder.dropDate;
         this.readyDate = builder.readyDate;
+        this.pickupDate = builder.pickupDate;
     }
 
     public long getId() {
@@ -62,6 +70,10 @@ public class Order {
 
     public LocalDateTime getReadyDate() {
         return readyDate;
+    }
+
+    public LocalDateTime getPickupDate() {
+        return pickupDate;
     }
 
     public Price getTotalAmount() {

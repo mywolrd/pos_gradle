@@ -6,6 +6,9 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import pos.model.application.Order;
+import pos.model.application.OrderDetails;
+import pos.model.application.Price;
 import pos.utils.TestUtils;
 
 public class OrderTest {

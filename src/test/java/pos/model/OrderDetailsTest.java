@@ -3,6 +3,9 @@ package pos.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import pos.model.application.Item;
+import pos.model.application.OrderDetails;
+import pos.model.application.Price;
 import pos.utils.TestUtils;
 
 public class OrderDetailsTest {

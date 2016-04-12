@@ -2,11 +2,11 @@ package pos.utils;
 
 import java.util.List;
 
-import pos.model.Item;
-import pos.model.ItemType;
-import pos.model.Order;
-import pos.model.OrderDetails;
-import pos.model.Price;
+import pos.model.application.Item;
+import pos.model.application.ItemType;
+import pos.model.application.Order;
+import pos.model.application.OrderDetails;
+import pos.model.application.Price;
 
 public class TestUtils {
 
