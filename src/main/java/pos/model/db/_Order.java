@@ -2,7 +2,7 @@ package pos.model.db;
 
 import java.sql.Date;
 
-public class Order {
+public class _Order {
 
     private Long id;
     private Date dropDate;

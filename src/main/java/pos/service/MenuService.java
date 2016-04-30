@@ -18,12 +18,12 @@ public class MenuService {
     @Autowired
     private ItemService itemService;
 
-    public List<MenuItem> listMainMenuOptions() {
+    public List<MenuItem> listItemMenuOptions() {
         List<Item> items = itemService.listActiveItems();
-        return this.groupMenuItemsByType(items);
+        return this.groupItemMenuByType(items);
     }
 
-    private List<MenuItem> groupMenuItemsByType(List<Item> items) {
+    private List<MenuItem> groupItemMenuByType(List<Item> items) {
 
         List<MenuItem> menuItems = new LinkedList<>();
         Map<ItemType, List<Item>> groups = this.groupItemsByType(items);

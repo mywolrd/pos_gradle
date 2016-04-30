@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import pos.dao.ItemDao;
-import pos.model.db.Item;
+import pos.model.db._Item;
 
 @Repository
 public class JdbcItemDao implements ItemDao {
@@ -35,41 +35,41 @@ public class JdbcItemDao implements ItemDao {
     private final static String updateActive = "update ITEM set active = :active where ITEM.id = :id";
 
     @Override
-    public Item uniqueByNameAndType(String name, String type) {
+    public _Item uniqueByNameAndType(String name, String type) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.NAME, name).addValue(DBNames.TYPE, type);
         try {
             return this.jdbcTemplate.queryForObject(uniqueByNameAndType,
-                    parameter, new BeanPropertyRowMapper<>(Item.class));
+                    parameter, new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
-    public List<Item> listItems() {
+    public List<_Item> listItems() {
         try {
             return this.jdbcTemplate.query(listAll,
-                    new BeanPropertyRowMapper<>(Item.class));
+                    new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return new ArrayList<>();
         }
     }
 
     @Override
-    public List<Item> listItemsByType(String type) {
+    public List<_Item> listItemsByType(String type) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.TYPE, type);
         try {
             return this.jdbcTemplate.query(listByType, parameter,
-                    new BeanPropertyRowMapper<>(Item.class));
+                    new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return new ArrayList<>();
         }
     }
 
     @Override
-    public void save(Item item) {
+    public void save(_Item item) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.TYPE, item.getType())
                 .addValue(DBNames.NAME, item.getName())
@@ -84,7 +84,7 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public void update(Item item) {
+    public void update(_Item item) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.TYPE, item.getType())
                 .addValue(DBNames.NAME, item.getName())
@@ -111,7 +111,7 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public void deactivate(Item item) {
+    public void deactivate(_Item item) {
         this.deactivateById(item.getId());
     }
 }

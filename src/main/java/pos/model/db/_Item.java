@@ -1,6 +1,6 @@
 package pos.model.db;
 
-public class Item {
+public class _Item {
 
     private long id;
     private String name;
