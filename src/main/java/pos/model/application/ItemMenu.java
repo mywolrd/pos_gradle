@@ -2,32 +2,32 @@ package pos.model.application;
 
 import java.util.List;
 
-public class MenuItem {
+public class ItemMenu {
 
     private Item item;
-    private List<MenuItem> submenu;
+    private List<ItemMenu> submenu;
 
     public static class MenuBuilder {
 
         private Item item;
-        private List<MenuItem> submenu;
+        private List<ItemMenu> submenu;
 
         public MenuBuilder item(Item item) {
             this.item = item;
             return this;
         }
 
-        public MenuBuilder submenu(List<MenuItem> item) {
+        public MenuBuilder submenu(List<ItemMenu> item) {
             this.submenu = item;
             return this;
         }
 
-        public MenuItem build() {
-            return new MenuItem(this);
+        public ItemMenu build() {
+            return new ItemMenu(this);
         }
     }
 
-    private MenuItem(MenuBuilder builder) {
+    private ItemMenu(MenuBuilder builder) {
         this.item = builder.item;
         this.submenu = builder.submenu;
     }
@@ -36,7 +36,7 @@ public class MenuItem {
         return item;
     }
 
-    public List<MenuItem> getSubmenu() {
+    public List<ItemMenu> getSubmenu() {
         return this.submenu;
     }
 }

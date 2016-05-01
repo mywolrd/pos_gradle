@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import pos.model.application.Item;
 import pos.model.application.ItemType;
-import pos.model.application.MenuItem;
+import pos.model.application.ItemMenu;
 import pos.model.application.Price;
 
 public class MenuService {
@@ -18,31 +18,33 @@ public class MenuService {
     @Autowired
     private ItemService itemService;
 
-    public List<MenuItem> listItemMenuOptions() {
+    public List<ItemMenu> listItemMenuOptions() {
         List<Item> items = itemService.listActiveItems();
         return this.groupItemMenuByType(items);
     }
 
-    private List<MenuItem> groupItemMenuByType(List<Item> items) {
+    private List<ItemMenu> groupItemMenuByType(List<Item> items) {
 
-        List<MenuItem> menuItems = new LinkedList<>();
+        List<ItemMenu> itemMenuList = new LinkedList<>();
         Map<ItemType, List<Item>> groups = this.groupItemsByType(items);
 
         for (Entry<ItemType, List<Item>> entry : groups.entrySet()) {
 
             ItemType type = entry.getKey();
-            List<MenuItem> submenu = entry.getValue().stream()
-                    .map(p -> new MenuItem.MenuBuilder().item(p).build())
-                    .collect(Collectors.toCollection(LinkedList::new));
+            List<ItemMenu> submenu = this.listItemMenu(entry.getValue());
 
             Item tempItem = new Item.ItemBuilder(type, Price.nothing()).build();
-            MenuItem menuItem = new MenuItem.MenuBuilder().item(tempItem)
+            ItemMenu itemMenu = new ItemMenu.MenuBuilder().item(tempItem)
                     .submenu(submenu).build();
-            menuItems.add(menuItem);
+            itemMenuList.add(itemMenu);
         }
-        return menuItems;
+        return itemMenuList;
     }
 
+    private List<ItemMenu> listItemMenu(List<Item> items) {
+    	return items.stream().map(p -> new ItemMenu.MenuBuilder().item(p).build()).collect(Collectors.toCollection(LinkedList::new));
+    }
+    
     private Map<ItemType, List<Item>> groupItemsByType(List<Item> items) {
         return items.stream().collect(Collectors.groupingBy(Item::getType));
     }
