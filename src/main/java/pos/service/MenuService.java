@@ -7,12 +7,14 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import pos.model.application.Item;
-import pos.model.application.ItemType;
 import pos.model.application.ItemMenu;
+import pos.model.application.ItemType;
 import pos.model.application.Price;
 
+@Service
 public class MenuService {
 
     @Autowired
@@ -31,20 +33,19 @@ public class MenuService {
         for (Entry<ItemType, List<Item>> entry : groups.entrySet()) {
 
             ItemType type = entry.getKey();
-            List<ItemMenu> submenu = this.listItemMenu(entry.getValue());
+            List<ItemMenu> submenu = this.buildItemMenu(entry.getValue());
 
             Item tempItem = new Item.ItemBuilder(type, Price.nothing()).build();
-            ItemMenu itemMenu = new ItemMenu.MenuBuilder().item(tempItem)
-                    .submenu(submenu).build();
+            ItemMenu itemMenu = new ItemMenu.MenuBuilder().item(tempItem).submenu(submenu).build();
             itemMenuList.add(itemMenu);
         }
         return itemMenuList;
     }
 
-    private List<ItemMenu> listItemMenu(List<Item> items) {
-    	return items.stream().map(p -> new ItemMenu.MenuBuilder().item(p).build()).collect(Collectors.toCollection(LinkedList::new));
+    private List<ItemMenu> buildItemMenu(List<Item> items) {
+        return items.stream().map(p -> new ItemMenu.MenuBuilder().item(p).build()).collect(Collectors.toCollection(LinkedList::new));
     }
-    
+
     private Map<ItemType, List<Item>> groupItemsByType(List<Item> items) {
         return items.stream().collect(Collectors.groupingBy(Item::getType));
     }
