@@ -1,5 +1,7 @@
 package pos.application;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -21,6 +23,9 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+
         launch(args);
     }
 

@@ -18,7 +18,7 @@ import pos.model.db._Item;
 public class JdbcItemDao implements ItemDao {
 
     @Autowired
-    private NamedParameterJdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final static String uniqueByNameAndType = "SELECT * from ITEM where ITEM.name = : name and ITEM.type = :type";
 
@@ -39,7 +39,7 @@ public class JdbcItemDao implements ItemDao {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.NAME, name).addValue(DBNames.TYPE, type);
         try {
-            return this.jdbcTemplate.queryForObject(uniqueByNameAndType,
+            return this.namedParameterJdbcTemplate.queryForObject(uniqueByNameAndType,
                     parameter, new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return null;
@@ -49,7 +49,7 @@ public class JdbcItemDao implements ItemDao {
     @Override
     public List<_Item> listItems() {
         try {
-            return this.jdbcTemplate.query(listAll,
+            return this.namedParameterJdbcTemplate.query(listAll,
                     new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return new ArrayList<>();
@@ -61,7 +61,7 @@ public class JdbcItemDao implements ItemDao {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(DBNames.TYPE, type);
         try {
-            return this.jdbcTemplate.query(listByType, parameter,
+            return this.namedParameterJdbcTemplate.query(listByType, parameter,
                     new BeanPropertyRowMapper<>(_Item.class));
         } catch (DataAccessException e) {
             return new ArrayList<>();
@@ -77,7 +77,7 @@ public class JdbcItemDao implements ItemDao {
                 .addValue(DBNames.CENT, item.getCent())
                 .addValue(DBNames.ACTIVE, Boolean.TRUE);
         try {
-            this.jdbcTemplate.update(insertItem, parameter);
+            this.namedParameterJdbcTemplate.update(insertItem, parameter);
         } catch (DataAccessException e) {
 
         }
@@ -92,7 +92,7 @@ public class JdbcItemDao implements ItemDao {
                 .addValue(DBNames.CENT, item.getCent())
                 .addValue(DBNames.ID, item.getId());
         try {
-            this.jdbcTemplate.update(updateItem, parameter);
+            this.namedParameterJdbcTemplate.update(updateItem, parameter);
         } catch (DataAccessException e) {
 
         }
@@ -104,7 +104,7 @@ public class JdbcItemDao implements ItemDao {
                 .addValue(DBNames.ACTIVE, Boolean.FALSE)
                 .addValue(DBNames.ID, id);
         try {
-            this.jdbcTemplate.update(updateActive, parameter);
+            this.namedParameterJdbcTemplate.update(updateActive, parameter);
         } catch (DataAccessException e) {
 
         }
