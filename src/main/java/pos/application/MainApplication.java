@@ -1,32 +1,41 @@
 package pos.application;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import pos.javafx.UIElementBuilder;
+import pos.javafx.button.ItemMenuButton;
+import pos.javafx.pane.ItemMenuPane;
 
+@Component
 public class MainApplication extends Application {
+
+    @Autowired
+    private UIElementBuilder uiElementBuilder;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        GridPane gridPane = new GridPane();
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        Scene scene = new Scene(gridPane, 300, 300);
+        List<ItemMenuButton> itemMenuButtons = ctx.getBean(UIElementBuilder.class).listItemMenuButtons();
+        ItemMenuPane itemMenuPane = new ItemMenuPane.ItemMenuPaneBuilder(itemMenuButtons).build();
+
+        Scene scene = new Scene(itemMenuPane, 1280, 1080);
 
         primaryStage.setTitle("Hello");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         launch(args);
     }
-
 }
