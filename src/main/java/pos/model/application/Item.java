@@ -48,6 +48,7 @@ public class Item {
         this.type = builder.type;
         this.name = builder.name;
         this.price = builder.price;
+        this.active = builder.active;
     }
 
     public long getId() {
@@ -97,10 +98,7 @@ public class Item {
             return false;
         Item other = (Item) obj;
 
-        return Objects.equal(this.id, other.id)
-                && Objects.equal(this.name, other.name)
-                && Objects.equal(this.price, other.price)
-                && Objects.equal(this.type, other.type);
+        return Objects.equal(this.id, other.id) && Objects.equal(this.name, other.name) && Objects.equal(this.price, other.price) && Objects.equal(this.type, other.type);
     }
 
 }

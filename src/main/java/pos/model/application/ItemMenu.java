@@ -39,4 +39,8 @@ public class ItemMenu {
     public List<ItemMenu> getSubmenu() {
         return this.submenu;
     }
+
+    public boolean hasSubmenu() {
+        return this.submenu != null && !this.submenu.isEmpty();
+    }
 }
