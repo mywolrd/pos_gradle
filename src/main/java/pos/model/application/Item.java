@@ -55,8 +55,8 @@ public class Item {
         return id;
     }
 
-    public ItemType getType() {
-        return type;
+    public ItemType getItemType() {
+        return this.type;
     }
 
     public String getName() {

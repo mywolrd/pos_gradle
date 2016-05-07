@@ -12,7 +12,6 @@ public class ItemMenuButton extends Button {
     private ItemMenuButton(ItemMenuButtonBuilder builder) {
         super();
         this.itemMenu = builder.itemMenu;
-        this.setText(this.itemMenu.getItem().getName());
     }
 
     public ItemMenu getItemMenu() {
@@ -34,7 +33,10 @@ public class ItemMenuButton extends Button {
         }
 
         public ItemMenuButton build() {
-            return new ItemMenuButton(this);
+            ItemMenuButton itemMenuButton = new ItemMenuButton(this);
+            System.out.println(itemMenuButton.getItemMenu().getItem().getName());
+            itemMenuButton.setText(itemMenuButton.getItemMenu().getItem().getName());
+            return itemMenuButton;
         }
     }
 

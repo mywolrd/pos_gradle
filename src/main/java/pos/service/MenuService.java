@@ -42,11 +42,11 @@ public class MenuService {
         return itemMenuList;
     }
 
-    private List<ItemMenu> buildItemMenu(List<Item> items) {
+    public List<ItemMenu> buildItemMenu(List<Item> items) {
         return items.stream().map(p -> new ItemMenu.MenuBuilder().item(p).build()).collect(Collectors.toCollection(LinkedList::new));
     }
 
-    private Map<ItemType, List<Item>> groupItemsByType(List<Item> items) {
-        return items.stream().collect(Collectors.groupingBy(Item::getType));
+    public Map<ItemType, List<Item>> groupItemsByType(List<Item> items) {
+        return items.stream().collect(Collectors.groupingBy(Item::getItemType));
     }
 }

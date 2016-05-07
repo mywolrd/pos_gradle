@@ -11,6 +11,8 @@ repositories {
 dependencies {
 	compile 'org.springframework:spring-context:4.2.5.RELEASE'
 	compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
+	compile 'org.springframework:spring-test:4.2.5.RELEASE'
+	
 	compile 'com.google.guava:guava:19.0'
 	compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
 	

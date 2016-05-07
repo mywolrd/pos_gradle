@@ -1,5 +1,7 @@
 package pos.model.application;
 
+import com.google.common.base.Objects;
+
 public class ItemType {
 
     private String name;
@@ -15,6 +17,16 @@ public class ItemType {
     }
 
     @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this.name);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -22,10 +34,8 @@ public class ItemType {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        if (name == null)
-            return false;
-
         ItemType other = (ItemType) obj;
-        return name.equals(other.name);
+        return Objects.equal(this.name, other.name);
     }
+
 }
