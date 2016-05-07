@@ -7,6 +7,11 @@ public class ItemType {
     private String name;
 
     public ItemType(String name) {
+        /* TODO */
+        /*
+         * Probably need to bubble it up and log.
+         * 
+         */
         if (name == null)
             throw new RuntimeException("ItemType name cannot be null.");
         this.name = name;
@@ -37,5 +42,4 @@ public class ItemType {
         ItemType other = (ItemType) obj;
         return Objects.equal(this.name, other.name);
     }
-
 }

@@ -30,6 +30,7 @@ public class MenuServiceTest {
         Item car3 = TestUtils.createCar(Price.nothing());
 
         String testType = "Test";
+
         Item testItem1 = TestUtils.createItem(testType, "", Price.nothing());
         Item testItem2 = TestUtils.createItem(testType, "One", Price.nothing());
         Item testItem3 = TestUtils.createItem(testType, "Two", Price.nothing());
