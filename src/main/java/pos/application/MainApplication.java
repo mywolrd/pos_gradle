@@ -27,7 +27,7 @@ public class MainApplication extends Application {
         List<ItemMenuButton> itemMenuButtons = ctx.getBean(UIElementBuilder.class).listItemMenuButtons();
         ItemMenuPane itemMenuPane = new ItemMenuPane.ItemMenuPaneBuilder(itemMenuButtons).build();
 
-        Scene scene = new Scene(itemMenuPane, 1280, 1080);
+        Scene scene = new Scene(itemMenuPane, 700, 700);
 
         primaryStage.setTitle("Hello");
         primaryStage.setScene(scene);

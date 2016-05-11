@@ -1,5 +1,6 @@
 package pos.service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class MenuService {
 
     private List<ItemMenu> groupItemMenuByType(List<Item> items) {
 
-        List<ItemMenu> itemMenuList = new LinkedList<>();
+        List<ItemMenu> itemMenuList = new ArrayList<>();
         Map<ItemType, List<Item>> groups = this.groupItemsByType(items);
 
         for (Entry<ItemType, List<Item>> entry : groups.entrySet()) {

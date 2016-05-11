@@ -1,6 +1,6 @@
 package pos.javafx;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +32,6 @@ public class UIElementBuilder {
     }
 
     private List<ItemMenuButton> buildItemMenuButtonList(List<ItemMenu> itemMenuList) {
-        return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(LinkedList::new));
+        return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(ArrayList::new));
     }
 }

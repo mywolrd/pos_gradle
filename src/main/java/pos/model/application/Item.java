@@ -72,7 +72,7 @@ public class Item {
     }
 
     public String getItemName() {
-        if (name != null && name.length() > 0)
+        if (name != null && !name.isEmpty())
             return this.type.getName() + " " + name;
         return this.type.getName();
     }

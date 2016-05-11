@@ -36,6 +36,12 @@ public class ItemMenu {
         return item;
     }
 
+    public String getName() {
+        if (null == this.item.getName() || this.item.getName().isEmpty())
+            return this.item.getItemType().getName();
+        return this.item.getName();
+    }
+
     public List<ItemMenu> getSubmenu() {
         return this.submenu;
     }

@@ -3,6 +3,8 @@ package pos.javafx.button;
 import java.util.List;
 
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import pos.model.application.ItemMenu;
 
 public class ItemMenuButton extends Button {
@@ -11,6 +13,7 @@ public class ItemMenuButton extends Button {
 
     private ItemMenuButton(ItemMenuButtonBuilder builder) {
         super();
+
         this.itemMenu = builder.itemMenu;
     }
 
@@ -34,8 +37,10 @@ public class ItemMenuButton extends Button {
 
         public ItemMenuButton build() {
             ItemMenuButton itemMenuButton = new ItemMenuButton(this);
-            System.out.println(itemMenuButton.getItemMenu().getItem().getName());
-            itemMenuButton.setText(itemMenuButton.getItemMenu().getItem().getName());
+
+            itemMenuButton.setText(itemMenu.getName());
+            itemMenuButton.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+
             return itemMenuButton;
         }
     }
