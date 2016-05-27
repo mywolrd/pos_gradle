@@ -1,4 +1,4 @@
-package pos.application;
+package pos.javafx.application;
 
 import java.util.List;
 
