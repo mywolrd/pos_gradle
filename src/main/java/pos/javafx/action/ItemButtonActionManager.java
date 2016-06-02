@@ -16,7 +16,7 @@ public class ItemButtonActionManager {
     // 3. current order list highlighter moves to this menu.
     // 4.
     public void assignMenuButtionAction(ItemMenuButton button) {
-        button.setOnAction(itemButtonActions.menuItemButtonAction(button));
+        button.setOnAction(itemButtonActions.menuItemButtonAction(button));//
     }
 
 }

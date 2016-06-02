@@ -86,15 +86,7 @@ public class OrderDetails {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((item == null) ? 0 : item.hashCode());
-        result = prime * result
-                + ((newPrice == null) ? 0 : newPrice.hashCode());
-        result = prime * result + (int) (orderId ^ (orderId >>> 32));
-        result = prime * result + quantity;
-        return result;
+        return Objects.hashCode(this.id, this.quantity, this.orderId, this.newPrice, this.item);
     }
 
     @Override
@@ -107,11 +99,8 @@ public class OrderDetails {
             return false;
         OrderDetails other = (OrderDetails) obj;
 
-        return Objects.equal(other.id, this.id)
-                && Objects.equal(other.quantity, this.quantity)
-                && Objects.equal(other.orderId, this.orderId)
-                && Objects.equal(other.newPrice, this.newPrice)
-                && Objects.equal(other.item, this.item);
+        return Objects.equal(other.id, this.id) && Objects.equal(other.quantity, this.quantity) && Objects.equal(other.orderId, this.orderId)
+                && Objects.equal(other.newPrice, this.newPrice) && Objects.equal(other.item, this.item);
     }
 
 }
