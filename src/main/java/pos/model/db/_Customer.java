@@ -1,6 +1,6 @@
 package pos.model.db;
 
-public class Customer {
+public class _Customer {
 
     private String lastName;
     private String firstName;
