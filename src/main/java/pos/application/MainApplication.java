@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pos.application.resource.Resources;
-import pos.application.ui.UIElementBuilder;
+import pos.application.ui.UIBuilder;
 import pos.application.ui.button.ItemMenuButton;
 import pos.application.ui.pane.ItemMenuPane;
 
@@ -24,11 +24,11 @@ public class MainApplication extends Application {
 
         Pane root = ctx.getBean(Resources.class).getRootPane();
 
-        List<ItemMenuButton> itemMenuButtons = ctx.getBean(UIElementBuilder.class).listItemMenuButtons();
+        List<ItemMenuButton> itemMenuButtons = ctx.getBean(UIBuilder.class).listItemMenuButtons();
         ItemMenuPane itemMenuPane = new ItemMenuPane.ItemMenuPaneBuilder(itemMenuButtons).build();
 
         root.getChildren().add(itemMenuPane);
-        Scene scene = new Scene(root, 700, 700);
+        Scene scene = new Scene(root, 1366, 768);
 
         primaryStage.setTitle("Hello");
         primaryStage.setScene(scene);
