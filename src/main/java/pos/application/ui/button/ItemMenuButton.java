@@ -1,7 +1,5 @@
 package pos.application.ui.button;
 
-import java.util.List;
-
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -24,15 +22,9 @@ public class ItemMenuButton extends Button {
     public static class ItemMenuButtonBuilder {
 
         private ItemMenu itemMenu;
-        private List<ItemMenuButton> submenuButtons;
 
         public ItemMenuButtonBuilder(ItemMenu itemMenu) {
             this.itemMenu = itemMenu;
-        }
-
-        public ItemMenuButtonBuilder submenuButtons(List<ItemMenuButton> submenuButtons) {
-            this.submenuButtons = submenuButtons;
-            return this;
         }
 
         public ItemMenuButton build() {

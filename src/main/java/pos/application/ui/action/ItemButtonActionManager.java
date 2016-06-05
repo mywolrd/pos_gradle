@@ -1,11 +1,11 @@
 package pos.application.ui.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import pos.application.ui.button.ItemMenuButton;
 
-@Service
+@Component
 public class ItemButtonActionManager {
 
     @Autowired

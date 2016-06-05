@@ -5,33 +5,35 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
+import javafx.scene.input.MouseEvent;
+import pos.application.ui.action.ItemButtonActions;
 import pos.application.ui.button.ItemMenuButton;
 import pos.model.application.ItemMenu;
 import pos.service.MenuService;
 
-/* TODO */
-/* Remove this...*/
-
-@Service
+@Component
 public class UIElementBuilder {
 
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private ItemButtonActions itemMenuButtonActions;
+
     public List<ItemMenuButton> listItemMenuButtons() {
-        return this.buildItemMenuButtonList(menuService.listItemMenuOptions());
+        List<ItemMenuButton> buttons = this.buildItemMenuButtonList(menuService.listItemMenuOptions());
+        for (ItemMenuButton button : buttons)
+            button.setOnAction(itemMenuButtonActions.menuItemButtonAction(button));
+        return buttons;
     }
 
-    private ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
-        if (itemMenu.hasSubmenu())
-            return new ItemMenuButton.ItemMenuButtonBuilder(itemMenu).submenuButtons(this.buildItemMenuButtonList(itemMenu.getSubmenu())).build();
-
+    public ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
         return new ItemMenuButton.ItemMenuButtonBuilder(itemMenu).build();
     }
 
-    private List<ItemMenuButton> buildItemMenuButtonList(List<ItemMenu> itemMenuList) {
+    public List<ItemMenuButton> buildItemMenuButtonList(List<ItemMenu> itemMenuList) {
         return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(ArrayList::new));
     }
 }
