@@ -15,7 +15,7 @@ public class TestUtils {
     }
 
     public static Item createItem(String typeName, String itemName, Price price) {
-        return new Item.ItemBuilder(new ItemType(typeName), price).build();
+        return new Item.ItemBuilder(new ItemType(typeName), price).name(itemName).build();
     }
 
     public static Price createPrice(int dollar, int cent) {
