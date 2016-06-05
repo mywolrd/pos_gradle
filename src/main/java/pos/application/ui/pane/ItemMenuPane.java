@@ -1,28 +1,12 @@
-package pos.javafx.pane;
+package pos.application.ui.pane;
 
 import java.util.List;
 
 import javafx.scene.layout.GridPane;
-import pos.javafx.button.ItemMenuButton;
+import pos.application.ui.button.ItemMenuButton;
 
 //  ItemMenuPane
 //      MenuButtons -> forEach Button -> Submenu ItemMenuPane if exists.
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 public class ItemMenuPane extends GridPane {
 
     private static int ITEMS_PER_ROW = 5;

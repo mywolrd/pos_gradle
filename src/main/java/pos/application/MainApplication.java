@@ -1,23 +1,19 @@
-package pos.javafx.application;
+package pos.application;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pos.javafx.UIElementBuilder;
-import pos.javafx.button.ItemMenuButton;
-import pos.javafx.pane.ItemMenuPane;
+import pos.application.ui.UIElementBuilder;
+import pos.application.ui.button.ItemMenuButton;
+import pos.application.ui.pane.ItemMenuPane;
 
 @Component
 public class MainApplication extends Application {
-
-    @Autowired
-    private UIElementBuilder uiElementBuilder;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -35,7 +31,6 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
 }

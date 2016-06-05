@@ -1,4 +1,4 @@
-package pos.javafx.button;
+package pos.application.ui.button;
 
 import javafx.scene.control.Button;
 

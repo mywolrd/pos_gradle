@@ -1,9 +1,9 @@
-package pos.javafx.action;
+package pos.application.ui.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pos.javafx.button.ItemMenuButton;
+import pos.application.ui.button.ItemMenuButton;
 
 @Service
 public class ItemButtonActionManager {

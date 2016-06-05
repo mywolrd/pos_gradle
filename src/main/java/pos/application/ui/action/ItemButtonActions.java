@@ -1,18 +1,18 @@
-package pos.javafx.action;
+package pos.application.ui.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import pos.javafx.button.ItemMenuButton;
-import pos.javafx.manager.OrderManager;
+import pos.application.resource.Resources;
+import pos.application.ui.button.ItemMenuButton;
 
 @Component
 public class ItemButtonActions {
 
     @Autowired
-    private OrderManager orderManager;
+    private Resources resources;
 
     EventHandler<ActionEvent> menuItemButtonAction(ItemMenuButton button) {
         return new EventHandler<ActionEvent>() {
@@ -23,7 +23,7 @@ public class ItemButtonActions {
                     //
                     //
                 } else {
-                    orderManager.addItemToCart(button.getItemMenu().getItem());
+                    resources.getCart().add(button.getItemMenu().getItem());
                 }
             }
         };

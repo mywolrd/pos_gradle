@@ -1,4 +1,4 @@
-package pos.javafx;
+package pos.application.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pos.javafx.button.ItemMenuButton;
+import pos.application.ui.button.ItemMenuButton;
 import pos.model.application.ItemMenu;
 import pos.service.MenuService;
 

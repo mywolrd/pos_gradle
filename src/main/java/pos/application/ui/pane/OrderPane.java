@@ -1,4 +1,4 @@
-package pos.javafx.pane;
+package pos.application.ui.pane;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;

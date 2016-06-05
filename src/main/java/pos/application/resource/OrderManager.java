@@ -1,4 +1,4 @@
-package pos.javafx.manager;
+package pos.application.resource;
 // TODO Change package name later?
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +12,11 @@ import pos.service.CartService;
 public class OrderManager {
 
     @Autowired
-    private Cart cart;
-    // Single cart for POS.
-
-    @Autowired
     private CartService cartService;
 
-    public Cart getCart() {
-        return this.cart;
-    }
+    private Cart cart = new Cart.CartBuilder().build();
 
     public void addItemToCart(Item item) {
-        cartService.addItem(this.cart, item);
     }
 
 }
