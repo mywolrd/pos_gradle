@@ -10,12 +10,10 @@ import javafx.scene.layout.Pane;
  */
 @Component
 public class Resources {
-    // TODO Remove comments when done.
 
     // Attach rootPane to the JavaFX Scene and add other panes to this root.
     private Pane root = new Pane();
 
-    // For POS, only a single cart is used at any given time.
     @Autowired
     private POSCart cart;
 

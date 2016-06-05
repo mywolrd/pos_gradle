@@ -18,8 +18,6 @@ import pos.model.application.Price;
 @Component
 public class POSCart {
 
-    private List<OrderDetails> items = new LinkedList<>();
-
     private ObservableList<OrderDetails> _items = FXCollections.observableList(new LinkedList<OrderDetails>());
 
     public void add(Item item) {
@@ -94,7 +92,6 @@ public class POSCart {
     }
 
     public ListView<OrderDetails> getCartView() {
-        ObservableList<OrderDetails> observableItems = FXCollections.observableList(this.items);
-        return new ListView<>(observableItems);
+        return new ListView<>(this._items);
     }
 }
