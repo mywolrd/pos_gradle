@@ -23,14 +23,13 @@ public class UIBuilder {
     private ItemButtonActions itemMenuButtonActions;
 
     public List<ItemMenuButton> listItemMenuButtons() {
-        List<ItemMenuButton> buttons = this.buildItemMenuButtons(menuService.listItemMenuOptions());
-        for (ItemMenuButton button : buttons)
-            button.setOnAction(itemMenuButtonActions.menuItemButtonAction(button));
-        return buttons;
+        return this.buildItemMenuButtons(menuService.listItemMenuOptions());
     }
 
     public ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
-        return new ItemMenuButton.ItemMenuButtonBuilder(itemMenu).build();
+        ItemMenuButton button = new ItemMenuButton.ItemMenuButtonBuilder(itemMenu).build();
+        button.setOnAction(itemMenuButtonActions.menuItemButtonAction(button));
+        return button;
     }
 
     public List<ItemMenuButton> buildItemMenuButtons(List<ItemMenu> itemMenuList) {
@@ -39,9 +38,6 @@ public class UIBuilder {
 
     public ItemMenuPane buildItemMenuPane(List<ItemMenu> itemMenuList) {
         List<ItemMenuButton> itemMenuButtons = this.buildItemMenuButtons(itemMenuList);
-        for (ItemMenuButton button : itemMenuButtons)
-            button.setOnAction(itemMenuButtonActions.menuItemButtonAction(button));
-
         return new ItemMenuPane.ItemMenuPaneBuilder(itemMenuButtons).build();
     }
 }
