@@ -2,26 +2,26 @@ package pos.application.ui.button;
 
 import javafx.scene.control.Button;
 
-public class CharacterInputButton extends Button {
+public class InputButton extends Button {
 
     private char inputChar;
 
-    private CharacterInputButton(CharacterInputButtonBuilder builder) {
+    private InputButton(InputButtonBuilder builder) {
         super();
         this.inputChar = builder.inputChar;
         this.setText(Character.toString(inputChar).toUpperCase());
     }
 
-    public static class CharacterInputButtonBuilder {
+    public static class InputButtonBuilder {
 
         private char inputChar;
 
-        public CharacterInputButtonBuilder(char inputChar) {
+        public InputButtonBuilder(char inputChar) {
             this.inputChar = inputChar;
         }
 
-        public CharacterInputButton build() {
-            return new CharacterInputButton(this);
+        public InputButton build() {
+            return new InputButton(this);
         }
     }
 
