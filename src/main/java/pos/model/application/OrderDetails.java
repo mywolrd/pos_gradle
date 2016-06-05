@@ -100,7 +100,7 @@ public class OrderDetails {
         OrderDetails other = (OrderDetails) obj;
 
         return Objects.equal(other.id, this.id) && Objects.equal(other.quantity, this.quantity) && Objects.equal(other.orderId, this.orderId)
-                && Objects.equal(other.newPrice, this.newPrice) && Objects.equal(other.item, this.item);
+                && Objects.equal(other.getPrice(), this.getPrice()) && Objects.equal(other.item, this.item);
     }
 
 }
