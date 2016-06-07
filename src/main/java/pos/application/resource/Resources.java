@@ -39,7 +39,7 @@ public class Resources {
         return this.cart;
     }
 
-    public void changeItemMenuPane(List<ItemMenu> itemMenuList) {
-        this.orderView.changeItemMenuView(this.uiBuilder.buildItemMenuButtonsView(itemMenuList));
+    public void changeItemMenuButtonsView(List<ItemMenu> itemMenuList) {
+        this.orderView.changeItemMenuButtonsView(this.uiBuilder.buildItemMenuButtonsView(itemMenuList));
     }
 }

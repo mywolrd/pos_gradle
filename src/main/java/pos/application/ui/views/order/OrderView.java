@@ -24,7 +24,7 @@ public class OrderView extends GridPane {
         return this.currentOrderView;
     }
 
-    public void changeItemMenuView(ItemMenuButtonsView view) {
+    public void changeItemMenuButtonsView(ItemMenuButtonsView view) {
         this.itemMenuView.changeMenuButtonsView(view);
     }
 

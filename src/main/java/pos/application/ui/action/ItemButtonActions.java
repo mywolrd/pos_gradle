@@ -19,7 +19,7 @@ public class ItemButtonActions {
             @Override
             public void handle(ActionEvent event) {
                 if (button.getItemMenu().hasSubmenu()) {
-                    // resources.changeItemMenuPane(button.getItemMenu().getSubmenu());
+                    resources.changeItemMenuButtonsView(button.getItemMenu().getSubmenu());
                 } else {
                     resources.getCart().add(button.getItemMenu().getItem());
                 }
