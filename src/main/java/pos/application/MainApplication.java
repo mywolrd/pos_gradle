@@ -1,7 +1,5 @@
 package pos.application;
 
-import java.util.List;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -9,10 +7,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pos.application.resource.Resources;
-import pos.application.ui.UIBuilder;
-import pos.application.ui.button.ItemMenuButton;
-import pos.application.ui.pane.ItemMenuPane;
 
 @Component
 public class MainApplication extends Application {
@@ -20,19 +16,20 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Resources resources = null;
 
-        Pane root = ctx.getBean(Resources.class).getRootPane();
+        try (ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml")) {
+            resources = ctx.getBean(Resources.class);
+            resources.initializeUI();
+            Pane root = resources.getRootPane();
 
-        List<ItemMenuButton> itemMenuButtons = ctx.getBean(UIBuilder.class).listItemMenuButtons();
-        ItemMenuPane itemMenuPane = new ItemMenuPane.ItemMenuPaneBuilder(itemMenuButtons).build();
+            Scene scene = new Scene(root, 1366, 768);
+            scene.getStylesheets().add("pos.css");
 
-        root.getChildren().add(itemMenuPane);
-        Scene scene = new Scene(root, 1366, 768);
-
-        primaryStage.setTitle("Hello");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
     }
 
     public static void main(String[] args) {

@@ -6,14 +6,10 @@ import org.springframework.stereotype.Component;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import pos.application.resource.Resources;
-import pos.application.ui.UIBuilder;
 import pos.application.ui.button.ItemMenuButton;
 
 @Component
 public class ItemButtonActions {
-
-    @Autowired
-    private UIBuilder uiBuilder;
 
     @Autowired
     private Resources resources;
@@ -23,7 +19,7 @@ public class ItemButtonActions {
             @Override
             public void handle(ActionEvent event) {
                 if (button.getItemMenu().hasSubmenu()) {
-                    resources.setItemMenuPane(uiBuilder.buildItemMenuPane(button.getItemMenu().getSubmenu()));
+                    // resources.changeItemMenuPane(button.getItemMenu().getSubmenu());
                 } else {
                     resources.getCart().add(button.getItemMenu().getItem());
                 }

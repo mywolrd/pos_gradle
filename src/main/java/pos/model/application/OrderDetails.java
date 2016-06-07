@@ -2,6 +2,8 @@ package pos.model.application;
 
 import com.google.common.base.Objects;
 
+import pos.utils.Utils;
+
 public class OrderDetails {
 
     private long id;
@@ -82,6 +84,15 @@ public class OrderDetails {
 
     public Item getItem() {
         return this.item;
+    }
+
+    @Override
+    public String toString() {
+        //@formatter:off
+        return Utils.lpad(Integer.toString(this.quantity), 3) + "  " 
+                + Utils.rpad(this.item.getItemName(), 30) + "  "
+                + Utils.rpad(this.getPrice().toString(), 6);
+        //@formatter:on
     }
 
     @Override

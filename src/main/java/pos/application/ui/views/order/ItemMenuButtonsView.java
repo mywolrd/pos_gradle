@@ -1,21 +1,18 @@
-package pos.application.ui.pane;
+package pos.application.ui.views.order;
 
 import java.util.List;
 
 import javafx.scene.layout.GridPane;
+import pos.application.ui.UIConstants;
 import pos.application.ui.button.ItemMenuButton;
 
-//  ItemMenuPane
-//      MenuButtons -> forEach Button -> Submenu ItemMenuPane if exists.
-public class ItemMenuPane extends GridPane {
+public class ItemMenuButtonsView extends GridPane {
 
     private static int ITEMS_PER_ROW = 5;
-    private static int DEFAULT_GAP = 5;
 
     private List<ItemMenuButton> buttons;
     private int rows;
     private int itemsPerRow;
-    private int defaultGap;
 
     public List<ItemMenuButton> getButtons() {
         return this.buttons;
@@ -29,12 +26,11 @@ public class ItemMenuPane extends GridPane {
         return this.itemsPerRow;
     }
 
-    private ItemMenuPane(ItemMenuPaneBuilder builder) {
+    private ItemMenuButtonsView(ItemMenuPaneBuilder builder) {
         super();
 
         this.buttons = builder.buttons;
         this.itemsPerRow = builder.itemsPerRow;
-        this.defaultGap = builder.defaultGap;
 
         this.rows = buttons.size() / itemsPerRow;
     }
@@ -43,15 +39,9 @@ public class ItemMenuPane extends GridPane {
 
         private List<ItemMenuButton> buttons;
         private int itemsPerRow = ITEMS_PER_ROW;
-        private int defaultGap = DEFAULT_GAP;
 
         public ItemMenuPaneBuilder(List<ItemMenuButton> buttons) {
             this.buttons = buttons;
-        }
-
-        public ItemMenuPaneBuilder defaultGap(int defaultGap) {
-            this.defaultGap = defaultGap;
-            return this;
         }
 
         public ItemMenuPaneBuilder itemsPerRow(int itemsPerRow) {
@@ -59,9 +49,11 @@ public class ItemMenuPane extends GridPane {
             return this;
         }
 
-        public ItemMenuPane build() {
+        public ItemMenuButtonsView build() {
 
-            ItemMenuPane itemMenuPane = new ItemMenuPane(this);
+            ItemMenuButtonsView itemMenuPane = new ItemMenuButtonsView(this);
+            itemMenuPane.setVgap(UIConstants.GAP_BUTTONS);
+            itemMenuPane.setHgap(UIConstants.GAP_BUTTONS);
 
             int c = 0;
             int r = 0;
