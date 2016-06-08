@@ -37,11 +37,32 @@ public class CurrentOrderView extends GridPane {
 
             //@formatter:off
             view.getRowConstraints()
-                .addAll(UIConstraints.heightConstraint(UIConstraints._35), 
-                        UIConstraints.heightConstraint(UIConstraints._65));
+                .addAll(UIConstraints.heightConstraint(UIConstraints._30), 
+                        UIConstraints.heightConstraint(UIConstraints._70));
+            view.getColumnConstraints()
+                .add(UIConstraints.widthConstraint(UIConstraints._100));
+            
+            GridPane rootCartPane = new GridPane();
+            rootCartPane.setStyle("-fx-padding: 10;" + 
+                    "-fx-border-style: solid inside;" + 
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" + 
+                    "-fx-border-radius: 5;" + 
+                    "-fx-border-color: blue;");
+            
+            rootCartPane.getColumnConstraints().add(UIConstraints.widthConstraint(UIConstraints._100));
+            rootCartPane.getRowConstraints().add(UIConstraints.heightConstraint(UIConstraints._100));
+            view.getCartView().setStyle("-fx-padding: 10;" + 
+                    "-fx-border-style: solid inside;" + 
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" + 
+                    "-fx-border-radius: 5;" + 
+                    "-fx-border-color: black;");
+            
+            rootCartPane.add(view.getCartView(), 0, 0);
             
             view.add(new StackPane(), 0, 0);
-            view.add(view.getCartView(), 0, 1);
+            view.add(rootCartPane, 0, 1);
             //@formatter:on
 
             return view;

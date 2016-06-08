@@ -46,8 +46,10 @@ public class OrderView extends GridPane {
 
             //@formatter:off
             view.getColumnConstraints()
-                .addAll(UIConstraints.widthConstraint(UIConstraints._45), 
-                        UIConstraints.widthConstraint(UIConstraints._55));
+                .addAll(UIConstraints.widthConstraint(UIConstraints._40), 
+                        UIConstraints.widthConstraint(UIConstraints._60));
+            view.getRowConstraints()
+                .add(UIConstraints.heightConstraint(UIConstraints._100));
             
             view.getItemMenuView().setStyle("-fx-padding: 10;" + 
                       "-fx-border-style: solid inside;" + 
