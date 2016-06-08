@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import pos.application.ui.UIBuilder;
 import pos.application.ui.views.order.OrderView;
 import pos.model.application.ItemMenu;
@@ -17,7 +17,7 @@ import pos.model.application.ItemMenu;
 public class Resources {
 
     // Attach rootPane to the JavaFX Scene and add other panes to this root.
-    private Pane root = new Pane();
+    private StackPane root = new StackPane();
     private OrderView orderView;
 
     @Autowired
@@ -31,7 +31,7 @@ public class Resources {
         this.root.getChildren().add(orderView);
     }
 
-    public Pane getRootPane() {
+    public StackPane getRootPane() {
         return this.root;
     }
 

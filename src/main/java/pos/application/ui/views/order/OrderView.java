@@ -49,6 +49,20 @@ public class OrderView extends GridPane {
                 .addAll(UIConstraints.widthConstraint(UIConstraints._45), 
                         UIConstraints.widthConstraint(UIConstraints._55));
             
+            view.getItemMenuView().setStyle("-fx-padding: 10;" + 
+                      "-fx-border-style: solid inside;" + 
+                      "-fx-border-width: 2;" +
+                      "-fx-border-insets: 5;" + 
+                      "-fx-border-radius: 5;" + 
+                      "-fx-border-color: blue;");
+            
+            view.getCurrentOrderView().setStyle("-fx-padding: 10;" + 
+                      "-fx-border-style: solid inside;" + 
+                      "-fx-border-width: 2;" +
+                      "-fx-border-insets: 5;" + 
+                      "-fx-border-radius: 5;" + 
+                      "-fx-border-color: black;");
+            
             view.add(view.getCurrentOrderView(), 0, 0);
             view.add(view.getItemMenuView(), 1, 0);
             //@formatter:on

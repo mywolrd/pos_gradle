@@ -21,10 +21,10 @@ public class MainApplication extends Application {
         try (ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml")) {
             resources = ctx.getBean(Resources.class);
             resources.initializeUI();
+
             Pane root = resources.getRootPane();
 
             Scene scene = new Scene(root, 1366, 768);
-            scene.getStylesheets().add("pos.css");
 
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);
