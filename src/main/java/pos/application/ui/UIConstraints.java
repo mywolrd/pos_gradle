@@ -12,11 +12,13 @@ public class UIConstraints {
     public static final double _65 = 65f;
     public static final double _75 = 75f;
 
+    public static final double _20 = 20f;
     public static final double _30 = 30f;
     public static final double _40 = 40f;
     public static final double _50 = 50f;
     public static final double _60 = 60f;
     public static final double _70 = 70f;
+    public static final double _80 = 80f;
 
     public static final double _100 = 100f;
 
