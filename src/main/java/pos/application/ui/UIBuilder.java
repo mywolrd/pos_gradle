@@ -30,7 +30,6 @@ public class UIBuilder {
     }
 
     public ButtonPadView buildItemMenuButtonPadView(List<ItemMenu> itemMenuList) {
-        System.out.println(itemMenuList.size());
         return orderViewBuilder.buildItemMenuButtonPadView(itemMenuList);
     }
 }

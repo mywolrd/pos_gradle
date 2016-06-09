@@ -1,65 +1,66 @@
 package pos.application.ui.views.order;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
 import pos.application.ui.views.input.ButtonPadView;
 
 public class ItemMenuView extends GridPane {
 
-    private ButtonPadView mainMenuButtonsView;
-    private ItemMenuOptionButtonsView menuOptionButtonsView;
+    private ButtonPadView mainButtonPadView;
+    private ButtonPadView sideButtonPadView;
 
-    private Pane _rootMenuButtonsView;
+    private StackPane _rootButtonPadView;
 
-    private ButtonPadView _currentMenuButtonsView;
-    private ButtonPadView _previousMenuButtonsView;
+    private ButtonPadView _currentButtonPadView;
+    private ButtonPadView _previousButtonPadView;
 
     private ItemMenuView(ItemMenuViewBuilder builder) {
         super();
 
-        this.mainMenuButtonsView = builder.mainMenuButtonsView;
-        this.menuOptionButtonsView = builder.menuOptionButtonsView;
+        this.mainButtonPadView = builder.mainButtonPadView;
+        this.sideButtonPadView = builder.sideButtonPadView;
 
-        this._rootMenuButtonsView = new Pane();
-        this._rootMenuButtonsView.getChildren().add(this.mainMenuButtonsView);
+        this._rootButtonPadView = new StackPane();
+        this._rootButtonPadView.getChildren().add(this.mainButtonPadView);
 
-        this._currentMenuButtonsView = this.mainMenuButtonsView;
-        this._previousMenuButtonsView = null;
+        this._currentButtonPadView = this.mainButtonPadView;
+        this._previousButtonPadView = null;
     }
 
-    public ButtonPadView getMainMenuButtonsView() {
-        return this.mainMenuButtonsView;
+    public ButtonPadView getMainButtonPadView() {
+        return this.mainButtonPadView;
     }
 
-    public ItemMenuOptionButtonsView getMenuOptionButtonsView() {
-        return this.menuOptionButtonsView;
+    public ButtonPadView getSideButtonPadView() {
+        return this.sideButtonPadView;
     }
 
     public void changeMenuButtonsView(ButtonPadView view) {
-        _previousMenuButtonsView = _currentMenuButtonsView;
+        _previousButtonPadView = _currentButtonPadView;
 
-        _rootMenuButtonsView.getChildren().remove(_currentMenuButtonsView);
-        _currentMenuButtonsView = view;
-        _rootMenuButtonsView.getChildren().add(_currentMenuButtonsView);
+        _rootButtonPadView.getChildren().remove(_currentButtonPadView);
+
+        _currentButtonPadView = view;
+        _rootButtonPadView.getChildren().add(_currentButtonPadView);
     }
 
-    public void showPreviousMenuButtonsView() {
-        this.changeMenuButtonsView(this._previousMenuButtonsView);
+    public void showPreviousButtonPadView() {
+        this.changeMenuButtonsView(this._previousButtonPadView);
     }
 
-    private Pane getRootMenuButtonsView() {
-        return this._rootMenuButtonsView;
+    private StackPane getRootButtonPadView() {
+        return this._rootButtonPadView;
     }
 
     public static class ItemMenuViewBuilder {
-        private ButtonPadView mainMenuButtonsView;
-        private ItemMenuOptionButtonsView menuOptionButtonsView;
+        private ButtonPadView mainButtonPadView;
+        private ButtonPadView sideButtonPadView;
 
-        public ItemMenuViewBuilder(ButtonPadView mainMenuButtonsView, ItemMenuOptionButtonsView menuOptionButtonsView) {
-            this.mainMenuButtonsView = mainMenuButtonsView;
-            this.menuOptionButtonsView = menuOptionButtonsView;
+        public ItemMenuViewBuilder(ButtonPadView mainButtonPadView, ButtonPadView sideButtonPadView) {
+            this.mainButtonPadView = mainButtonPadView;
+            this.sideButtonPadView = sideButtonPadView;
         }
 
         public ItemMenuView build() {
@@ -73,8 +74,8 @@ public class ItemMenuView extends GridPane {
                 .addAll(UIConstraints.heightConstraint(UIConstraints._55), 
                         UIConstraints.heightConstraint(UIConstraints._45));
             
-            view.add(view.getRootMenuButtonsView(), 0, 0);
-            view.add(view.getMenuOptionButtonsView(), 0, 1);            
+            view.add(view.getRootButtonPadView(), 0, 0);
+            view.add(view.getSideButtonPadView(), 0, 1);            
             //@formatter:on
             return view;
         }

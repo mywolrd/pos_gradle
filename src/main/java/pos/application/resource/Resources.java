@@ -28,7 +28,7 @@ public class Resources {
 
     public void initializeUI() {
         orderView = uiBuilder.buildOrderView();
-        this.root.getChildren().add(uiBuilder.buildOrderView());
+        this.root.getChildren().add(orderView);
     }
 
     public StackPane getRootPane() {

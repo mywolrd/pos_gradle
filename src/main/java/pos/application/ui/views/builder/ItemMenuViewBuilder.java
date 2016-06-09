@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import pos.application.ui.action.ItemButtonActions;
 import pos.application.ui.button.ItemMenuButton;
 import pos.application.ui.views.input.ButtonPadView;
-import pos.application.ui.views.order.ItemMenuOptionButtonsView;
 import pos.application.ui.views.order.ItemMenuView;
 import pos.model.application.ItemMenu;
 import pos.service.MenuService;
@@ -25,15 +24,15 @@ public class ItemMenuViewBuilder {
     private MenuService menuService;
 
     public ItemMenuView buildItemMenuView() {
-        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonPadView(), this.buildMenuOptionsButtonsView()).build();
+        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonPadView(), this.buildMenuOptionsButtonPadView()).build();
     }
 
     private ButtonPadView buildItemMenuButtonPadView() {
         return this.buildItemMenuButtonPadView(this.menuService.listItemMenuOptions());
     }
 
-    private ItemMenuOptionButtonsView buildMenuOptionsButtonsView() {
-        return new ItemMenuOptionButtonsView();
+    private ButtonPadView buildMenuOptionsButtonPadView() {
+        return this.buildItemMenuButtonPadView(this.menuService.listItemMenuOptions());
     }
 
     private ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
