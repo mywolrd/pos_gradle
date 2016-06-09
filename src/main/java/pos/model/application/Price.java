@@ -47,8 +47,7 @@ public class Price {
     }
 
     public static Price nothing() {
-        return new Price.PriceBuilder().dollar(Utils.ZERO).cent(Utils.ZERO)
-                .build();
+        return new Price.PriceBuilder().dollar(Utils.ZERO).cent(Utils.ZERO).build();
     }
 
     public static Price add(Price a, Price b) {
@@ -68,12 +67,13 @@ public class Price {
     }
 
     @Override
+    public String toString() {
+        return new StringBuilder().append(Integer.toString(this.dollar)).append(".").append(Integer.toString(this.cent)).toString();
+    }
+
+    @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + cent;
-        result = prime * result + dollar;
-        return result;
+        return Objects.hashCode(this.cent, this.dollar);
     }
 
     @Override
@@ -87,7 +87,6 @@ public class Price {
 
         Price other = (Price) obj;
 
-        return Objects.equal(this.cent, other.cent)
-                && Objects.equal(this.dollar, other.dollar);
+        return Objects.equal(this.cent, other.cent) && Objects.equal(this.dollar, other.dollar);
     }
 }
