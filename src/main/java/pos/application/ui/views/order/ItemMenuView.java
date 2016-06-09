@@ -4,16 +4,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
+import pos.application.ui.views.input.ButtonPadView;
 
 public class ItemMenuView extends GridPane {
 
-    private ItemMenuButtonsView mainMenuButtonsView;
+    private ButtonPadView mainMenuButtonsView;
     private ItemMenuOptionButtonsView menuOptionButtonsView;
 
     private Pane _rootMenuButtonsView;
 
-    private ItemMenuButtonsView _currentMenuButtonsView;
-    private ItemMenuButtonsView _previousMenuButtonsView;
+    private ButtonPadView _currentMenuButtonsView;
+    private ButtonPadView _previousMenuButtonsView;
 
     private ItemMenuView(ItemMenuViewBuilder builder) {
         super();
@@ -28,7 +29,7 @@ public class ItemMenuView extends GridPane {
         this._previousMenuButtonsView = null;
     }
 
-    public ItemMenuButtonsView getMainMenuButtonsView() {
+    public ButtonPadView getMainMenuButtonsView() {
         return this.mainMenuButtonsView;
     }
 
@@ -36,7 +37,7 @@ public class ItemMenuView extends GridPane {
         return this.menuOptionButtonsView;
     }
 
-    public void changeMenuButtonsView(ItemMenuButtonsView view) {
+    public void changeMenuButtonsView(ButtonPadView view) {
         _previousMenuButtonsView = _currentMenuButtonsView;
 
         _rootMenuButtonsView.getChildren().remove(_currentMenuButtonsView);
@@ -53,10 +54,10 @@ public class ItemMenuView extends GridPane {
     }
 
     public static class ItemMenuViewBuilder {
-        private ItemMenuButtonsView mainMenuButtonsView;
+        private ButtonPadView mainMenuButtonsView;
         private ItemMenuOptionButtonsView menuOptionButtonsView;
 
-        public ItemMenuViewBuilder(ItemMenuButtonsView mainMenuButtonsView, ItemMenuOptionButtonsView menuOptionButtonsView) {
+        public ItemMenuViewBuilder(ButtonPadView mainMenuButtonsView, ItemMenuOptionButtonsView menuOptionButtonsView) {
             this.mainMenuButtonsView = mainMenuButtonsView;
             this.menuOptionButtonsView = menuOptionButtonsView;
         }
@@ -64,8 +65,8 @@ public class ItemMenuView extends GridPane {
         public ItemMenuView build() {
             ItemMenuView view = new ItemMenuView(this);
 
-            view.setHgap(UIConstants.GAP_PANE);
-            view.setVgap(UIConstants.GAP_PANE);
+            view.setHgap(UIConstants.GAP_PANES);
+            view.setVgap(UIConstants.GAP_PANES);
 
             //@formatter:off
             view.getRowConstraints()

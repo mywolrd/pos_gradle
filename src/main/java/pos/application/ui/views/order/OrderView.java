@@ -3,6 +3,7 @@ package pos.application.ui.views.order;
 import javafx.scene.layout.GridPane;
 import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
+import pos.application.ui.views.input.ButtonPadView;
 
 public class OrderView extends GridPane {
 
@@ -24,7 +25,7 @@ public class OrderView extends GridPane {
         return this.currentOrderView;
     }
 
-    public void changeItemMenuButtonsView(ItemMenuButtonsView view) {
+    public void changeItemMenuButtonsView(ButtonPadView view) {
         this.itemMenuView.changeMenuButtonsView(view);
     }
 
@@ -41,8 +42,8 @@ public class OrderView extends GridPane {
         public OrderView build() {
             OrderView view = new OrderView(this);
 
-            view.setHgap(UIConstants.GAP_PANE);
-            view.setVgap(UIConstants.GAP_PANE);
+            view.setHgap(UIConstants.GAP_PANES);
+            view.setVgap(UIConstants.GAP_PANES);
 
             //@formatter:off
             view.getColumnConstraints()

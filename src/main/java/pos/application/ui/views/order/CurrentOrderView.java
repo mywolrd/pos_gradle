@@ -32,8 +32,8 @@ public class CurrentOrderView extends GridPane {
         public CurrentOrderView build() {
             CurrentOrderView view = new CurrentOrderView(this);
 
-            view.setHgap(UIConstants.GAP_PANE);
-            view.setVgap(UIConstants.GAP_PANE);
+            view.setHgap(UIConstants.GAP_PANES);
+            view.setVgap(UIConstants.GAP_PANES);
 
             //@formatter:off
             view.getRowConstraints()

@@ -6,27 +6,27 @@ import pos.application.ui.UIConstraints;
 
 public class KeyPadView extends GridPane {
 
-    private LetterPadView letterPadView;
-    private NumberPadView numberPadView;
+    private ButtonPadView letterPadView;
+    private ButtonPadView numberPadView;
 
     private KeyPadView(KeyPadViewBuilder builder) {
         this.letterPadView = builder.letterPadView;
         this.numberPadView = builder.numberPadView;
     }
 
-    public LetterPadView getLetterPadView() {
+    public ButtonPadView getLetterPadView() {
         return this.letterPadView;
     }
 
-    public NumberPadView getNumberPadView() {
+    public ButtonPadView getNumberPadView() {
         return this.numberPadView;
     }
 
     public static class KeyPadViewBuilder {
-        private LetterPadView letterPadView;
-        private NumberPadView numberPadView;
+        private ButtonPadView letterPadView;
+        private ButtonPadView numberPadView;
 
-        public KeyPadViewBuilder(LetterPadView letterPadView, NumberPadView numberPadView) {
+        public KeyPadViewBuilder(ButtonPadView letterPadView, ButtonPadView numberPadView) {
             this.letterPadView = letterPadView;
             this.numberPadView = numberPadView;
         }

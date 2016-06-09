@@ -28,7 +28,7 @@ public class Resources {
 
     public void initializeUI() {
         orderView = uiBuilder.buildOrderView();
-        this.root.getChildren().add(uiBuilder.buildKeyPadView());
+        this.root.getChildren().add(uiBuilder.buildOrderView());
     }
 
     public StackPane getRootPane() {
@@ -40,6 +40,6 @@ public class Resources {
     }
 
     public void changeItemMenuButtonsView(List<ItemMenu> itemMenuList) {
-        this.orderView.changeItemMenuButtonsView(this.uiBuilder.buildItemMenuButtonsView(itemMenuList));
+        this.orderView.changeItemMenuButtonsView(this.uiBuilder.buildItemMenuButtonPadView(itemMenuList));
     }
 }

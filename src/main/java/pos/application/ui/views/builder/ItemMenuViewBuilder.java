@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import pos.application.ui.action.ItemButtonActions;
 import pos.application.ui.button.ItemMenuButton;
-import pos.application.ui.views.order.ItemMenuButtonsView;
+import pos.application.ui.views.input.ButtonPadView;
 import pos.application.ui.views.order.ItemMenuOptionButtonsView;
 import pos.application.ui.views.order.ItemMenuView;
 import pos.model.application.ItemMenu;
@@ -25,11 +25,11 @@ public class ItemMenuViewBuilder {
     private MenuService menuService;
 
     public ItemMenuView buildItemMenuView() {
-        return new ItemMenuView.ItemMenuViewBuilder(this.buildMainItemMenuView(), this.buildMenuOptionsButtonsView()).build();
+        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonPadView(), this.buildMenuOptionsButtonsView()).build();
     }
 
-    private ItemMenuButtonsView buildMainItemMenuView() {
-        return this.buildItemMenuView(this.menuService.listItemMenuOptions());
+    private ButtonPadView buildItemMenuButtonPadView() {
+        return this.buildItemMenuButtonPadView(this.menuService.listItemMenuOptions());
     }
 
     private ItemMenuOptionButtonsView buildMenuOptionsButtonsView() {
@@ -46,9 +46,9 @@ public class ItemMenuViewBuilder {
         return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ItemMenuButtonsView buildItemMenuView(List<ItemMenu> itemMenuList) {
-        List<ItemMenuButton> itemMenuButtons = this.buildItemMenuButtons(itemMenuList);
-        return new ItemMenuButtonsView.ItemMenuPaneBuilder(itemMenuButtons).build();
+    public ButtonPadView buildItemMenuButtonPadView(List<ItemMenu> itemMenuList) {
+        List<ItemMenuButton> buttons = this.buildItemMenuButtons(itemMenuList);
+        return new ButtonPadView.ButtonPadViewBuilder(buttons).build();
     }
 
 }
