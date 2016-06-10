@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import pos.application.resource.Resources;
@@ -34,9 +35,14 @@ public class ButtonActions {
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 String value = Character.toString(ch);
-                KeyEvent keyEvent = new KeyEvent(button, resources.getInputField(), KeyEvent.KEY_TYPED, value, value, code, false, false, false, false);
-                resources.getInputField().fireEvent(keyEvent);
+
+                TextField inputField = resources.getInputField();
+                inputField.positionCaret(inputField.getText().length());
+
+                KeyEvent keyEvent = new KeyEvent(button, inputField, KeyEvent.KEY_TYPED, value, value, code, false, false, false, false);
+                inputField.fireEvent(keyEvent);
             }
         };
     }
