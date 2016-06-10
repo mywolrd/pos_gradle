@@ -77,8 +77,11 @@ public class ButtonPadView extends GridPane {
             int numberOfColumns = view.getNumberOfColumns();
             
             for (Button button : view.getButtons()) {
+                button.setStyle(UIConstants.STYLE_BLACK);
                 StackPane container = new StackPane();
                 container.getChildren().add(button);
+                container.setStyle(UIConstants.STYLE_BLUE);
+
                 view.add(container, c, r);
                 c++;
                 if (c == numberOfColumns) {

@@ -11,9 +11,9 @@ public class UIConstants {
     public static char[] NUMBERS = "1234567890".toCharArray();
 
     // TODO Remove.
-    public static String STYLE_BLACK = "-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 2;" + "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
+    public static String STYLE_BLACK = "-fx-padding: 2;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;" + "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
             + "-fx-border-color: black;";
 
-    public static String STYLE_BLUE = "-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 2;" + "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
+    public static String STYLE_BLUE = "-fx-padding: 2;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;" + "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
             + "-fx-border-color: blue;";
 }

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import pos.application.ui.action.ItemButtonActions;
+import pos.application.ui.action.ButtonActions;
 import pos.application.ui.button.ItemMenuButton;
 import pos.application.ui.views.input.ButtonPadView;
 import pos.application.ui.views.order.ItemMenuView;
@@ -18,7 +18,7 @@ import pos.service.MenuService;
 public class ItemMenuViewBuilder {
 
     @Autowired
-    private ItemButtonActions itemMenuButtonActions;
+    private ButtonActions itemMenuButtonActions;
 
     @Autowired
     private MenuService menuService;

@@ -43,21 +43,13 @@ public class CurrentOrderView extends GridPane {
                 .add(UIConstraints.widthConstraint(UIConstraints._100));
             
             GridPane rootCartPane = new GridPane();
-            rootCartPane.setStyle("-fx-padding: 10;" + 
-                    "-fx-border-style: solid inside;" + 
-                    "-fx-border-width: 2;" +
-                    "-fx-border-insets: 5;" + 
-                    "-fx-border-radius: 5;" + 
-                    "-fx-border-color: blue;");
             
             rootCartPane.getColumnConstraints().add(UIConstraints.widthConstraint(UIConstraints._100));
             rootCartPane.getRowConstraints().add(UIConstraints.heightConstraint(UIConstraints._100));
-            view.getCartView().setStyle("-fx-padding: 10;" + 
-                    "-fx-border-style: solid inside;" + 
-                    "-fx-border-width: 2;" +
-                    "-fx-border-insets: 5;" + 
-                    "-fx-border-radius: 5;" + 
-                    "-fx-border-color: black;");
+            
+            // TODO Remove.
+            rootCartPane.setStyle(UIConstants.STYLE_BLUE);
+            view.getCartView().setStyle(UIConstants.STYLE_BLACK);
             
             rootCartPane.add(view.getCartView(), 0, 0);
             
