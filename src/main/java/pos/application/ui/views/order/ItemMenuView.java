@@ -1,12 +1,11 @@
 package pos.application.ui.views.order;
 
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
+import pos.application.ui.views.BaseVgrid;
 import pos.application.ui.views.input.ButtonPadView;
 
-public class ItemMenuView extends GridPane {
+public class ItemMenuView extends BaseVgrid {
 
     private ButtonPadView mainButtonPadView;
     private ButtonPadView sideButtonPadView;
@@ -16,8 +15,8 @@ public class ItemMenuView extends GridPane {
     private ButtonPadView _currentButtonPadView;
     private ButtonPadView _previousButtonPadView;
 
-    private ItemMenuView(ItemMenuViewBuilder builder) {
-        super();
+    private ItemMenuView(ItemMenuViewBuilder builder, double... heights) {
+        super(heights);
 
         this.mainButtonPadView = builder.mainButtonPadView;
         this.sideButtonPadView = builder.sideButtonPadView;
@@ -64,19 +63,11 @@ public class ItemMenuView extends GridPane {
         }
 
         public ItemMenuView build() {
-            ItemMenuView view = new ItemMenuView(this);
+            ItemMenuView view = new ItemMenuView(this, UIConstraints._55, UIConstraints._45);
 
-            view.setHgap(UIConstants.GAP_PANES);
-            view.setVgap(UIConstants.GAP_PANES);
-
-            //@formatter:off
-            view.getRowConstraints()
-                .addAll(UIConstraints.heightConstraint(UIConstraints._55), 
-                        UIConstraints.heightConstraint(UIConstraints._45));
-            
             view.add(view.getRootButtonPadView(), 0, 0);
-            view.add(view.getSideButtonPadView(), 0, 1);            
-            //@formatter:on
+            view.add(view.getSideButtonPadView(), 0, 1);
+
             return view;
         }
     }

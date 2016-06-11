@@ -39,15 +39,11 @@ public class KeyPadViewBuilder {
         List<Button> buttons = new LinkedList<>();
 
         for (Character c : Chars.asList(chars)) {
+            KeyCode keyCode = Character.isDigit(c) ? KeyCode.valueOf("DIGIT" + c) : KeyCode.valueOf(Character.toString(c));
+
             Button button = new Button();
-            KeyCode keyCode;
-            if (Character.isDigit(c)) {
-                keyCode = KeyCode.valueOf("DIGIT" + c);
-            } else {
-                keyCode = KeyCode.valueOf(Character.toString(c));
-            }
-            button.setOnAction(buttonActions.keyPadButtonAction(button, c, keyCode));
             button.setText(Character.toString(c));
+            button.setOnAction(buttonActions.keyPadButtonAction(button, c, keyCode));
             buttons.add(button);
         }
 

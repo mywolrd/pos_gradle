@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import pos.application.resource.POSCart;
 import pos.application.ui.views.builder.KeyPadViewBuilder;
 import pos.application.ui.views.builder.OrderViewBuilder;
 import pos.application.ui.views.builder.SearchViewBuilder;
@@ -26,8 +27,8 @@ public class UIBuilder {
     @Autowired
     private SearchViewBuilder searchViewBuilder;
 
-    public OrderView buildOrderView() {
-        return this.orderViewBuilder.buildOrderView();
+    public OrderView buildOrderView(POSCart cart) {
+        return this.orderViewBuilder.buildOrderView(cart);
     }
 
     public <T> SearchView<T> buildSearchView() {

@@ -1,17 +1,18 @@
 package pos.application.ui.views.search;
 
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
+import pos.application.ui.views.BaseHgrid;
 import pos.application.ui.views.input.KeyPadView;
 
-public class SearchView<T> extends GridPane {
+public class SearchView<T> extends BaseHgrid {
 
     private SearchInputResultView<T> searchResultView;
     private KeyPadView keyPadView;
 
-    public SearchView(SearchViewBuilder<T> builder) {
+    public SearchView(SearchViewBuilder<T> builder, double... widths) {
+        super(widths);
+
         this.searchResultView = builder.searchResultView;
         this.keyPadView = builder.keyPadView;
     }
@@ -39,19 +40,11 @@ public class SearchView<T> extends GridPane {
         }
 
         public SearchView<T> build() {
-            SearchView<T> view = new SearchView<>(this);
+            SearchView<T> view = new SearchView<>(this, UIConstraints._40, UIConstraints._60);
 
-            view.setVgap(UIConstants.GAP_PANES);
-            view.setHgap(UIConstants.GAP_PANES);
-
-            //@formatter:off
-            view.getColumnConstraints()
-                .addAll(UIConstraints.widthConstraint(UIConstraints._40),
-                        UIConstraints.widthConstraint(UIConstraints._60));
-            
             view.add(view.getSearchResultView(), 0, 0);
             view.add(view.getKeyPadView(), 1, 0);
-            //@formatter:on   
+
             return view;
         }
     }

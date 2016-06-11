@@ -9,32 +9,19 @@ import pos.application.ui.UIConstraints;
 
 public class BaseVgrid extends GridPane {
 
-    public BaseVgrid() {
+    public BaseVgrid(double... heights) {
         super();
-    }
 
-    public static class BaseVgridBuilder {
-        double[] heights;
+        this.setVgap(UIConstants.GAP_PANES);
+        this.setHgap(UIConstants.GAP_PANES);
 
-        public BaseVgridBuilder(double... heights) {
-            this.heights = heights;
+        //@formatter:off
+        for (double height : heights) {
+            this.getRowConstraints()
+                .add(UIConstraints.heightConstraint(height));
         }
-
-        public BaseVgrid build() {
-            BaseVgrid view = new BaseVgrid();
-            view.setVgap(UIConstants.GAP_PANES);
-            view.setHgap(UIConstants.GAP_PANES);
-
-            //@formatter:off
-            for (double height : this.heights) {
-                view.getRowConstraints()
-                    .add(UIConstraints.heightConstraint(height));
-            }
-            view.getColumnConstraints()
-                .add(UIConstraints.widthConstraint(UIConstraints._100));
-            //@formatter:on
-
-            return view;
-        }
+        this.getColumnConstraints()
+            .add(UIConstraints.widthConstraint(UIConstraints._100));
+        //@formatter:on
     }
 }
