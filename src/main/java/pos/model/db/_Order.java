@@ -4,16 +4,16 @@ import java.sql.Date;
 
 public class _Order {
 
-    private Long id;
+    private long id;
     private Date dropDate;
     private Date readyDate;
     private Date pickupDate;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
