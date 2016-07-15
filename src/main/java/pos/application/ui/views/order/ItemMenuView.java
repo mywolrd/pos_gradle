@@ -1,6 +1,7 @@
 package pos.application.ui.views.order;
 
 import javafx.scene.layout.StackPane;
+import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
 import pos.application.ui.views.BaseVgrid;
 import pos.application.ui.views.input.ButtonPadView;
@@ -19,10 +20,13 @@ public class ItemMenuView extends BaseVgrid {
         super(heights);
 
         this.mainButtonPadView = builder.mainButtonPadView;
+        this.mainButtonPadView.setStyle(UIConstants.STYLE_BLACK);
         this.sideButtonPadView = builder.sideButtonPadView;
+        this.sideButtonPadView.setStyle(UIConstants.STYLE_BLACK);
 
         this._rootButtonPadView = new StackPane();
         this._rootButtonPadView.getChildren().add(this.mainButtonPadView);
+        this._rootButtonPadView.setStyle(UIConstants.STYLE_BLUE);
 
         this._currentButtonPadView = this.mainButtonPadView;
         this._previousButtonPadView = null;

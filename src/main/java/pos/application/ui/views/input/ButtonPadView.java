@@ -3,9 +3,9 @@ package pos.application.ui.views.input;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
 
@@ -30,6 +30,17 @@ public class ButtonPadView extends GridPane {
 
     public List<? extends Button> getButtons() {
         return this.buttons;
+    }
+
+    @Override
+    public void layoutChildren() {
+        for (Node node : this.getChildren()) {
+            if (node instanceof Button) {
+                /* TODO */
+                // UI settings change, do I use this or rebuild?
+            }
+        }
+        super.layoutChildren();
     }
 
     private ButtonPadView(ButtonPadViewBuilder builder) {
@@ -77,12 +88,11 @@ public class ButtonPadView extends GridPane {
             int numberOfColumns = view.getNumberOfColumns();
             
             for (Button button : view.getButtons()) {
-                button.setStyle(UIConstants.STYLE_BLACK);
-                StackPane container = new StackPane();
-                container.getChildren().add(button);
-                container.setStyle(UIConstants.STYLE_BLUE);
-
-                view.add(container, c, r);
+                button.setMaxWidth(Double.MAX_VALUE);
+                button.setMaxHeight(Double.MAX_VALUE);
+                
+                view.add(button, c, r);
+                
                 c++;
                 if (c == numberOfColumns) {
                     c = 0; r++;

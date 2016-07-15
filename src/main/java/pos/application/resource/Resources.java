@@ -33,7 +33,8 @@ public class Resources {
     public void initializeUI() {
         this.orderView = this.uiBuilder.buildOrderView(this.cart);
         this.orderSearchView = this.uiBuilder.buildSearchView();
-        this.root.getChildren().add(orderView);
+
+        this.root.getChildren().add(this.orderView);
     }
 
     public TextField getInputField() {
