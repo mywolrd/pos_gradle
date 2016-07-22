@@ -3,11 +3,9 @@ package pos.dao.jdbc;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -15,10 +13,7 @@ import pos.dao.ItemDao;
 import pos.model.db._Item;
 
 @Repository
-public class JdbcItemDao implements ItemDao {
-
-    @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+public class JdbcItemDao extends JdbcBaseDao implements ItemDao {
 
     private final static String uniqueByNameAndType = "SELECT * from ITEM where ITEM.name = :name and ITEM.type = :type";
 
