@@ -11,10 +11,10 @@ import pos.application.ui.views.search.SearchView;
 public class SearchViewBuilder {
 
     @Autowired
-    private KeyPadViewBuilder keyPadViewBuilder;
+    private KeyboardViewBuilder keyPadViewBuilder;
 
     public <T> SearchView<T> buildSearchView() {
-        return new SearchView.SearchViewBuilder<T>(this.buildSearchInputResultView(), keyPadViewBuilder.buildKeyPadView()).build();
+        return new SearchView.SearchViewBuilder<T>(this.buildSearchInputResultView(), keyPadViewBuilder.buildKeyboardView()).build();
     }
 
     public <T> SearchInputResultView<T> buildSearchInputResultView() {
