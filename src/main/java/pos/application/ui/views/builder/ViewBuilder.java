@@ -15,17 +15,23 @@ public class ViewBuilder {
     @Autowired
     private ItemMenuViewBuilder itemMenuViewBuilder;
 
+    @Autowired
+    private KeyboardViewBuilder keyboardViewBuilder;
+
     public Pane buildCurrentOrderView(POSCart cart) {
         return new CurrentOrderViewBuilder(this.buildCartView(cart)).build();
     }
 
     public Pane buildItemMenuView() {
-        return itemMenuViewBuilder.buildItemMenuView();
+        return this.itemMenuViewBuilder.buildItemMenuView();
+    }
+
+    public Pane buildKeyboardView() {
+        return this.keyboardViewBuilder.buildKeyboardView();
     }
 
     private CartView buildCartView(POSCart cart) {
         return new CartViewBuilder(cart.getCartView()).build();
     }
 
-    
 }

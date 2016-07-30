@@ -16,12 +16,12 @@ import pos.application.ui.views.input.ButtonPadView;
 import pos.application.ui.views.input.KeyboardView;
 
 @Component
-public class KeyPadViewBuilder {
+public class KeyboardViewBuilder {
 
     @Autowired
     private ButtonActions buttonActions;
 
-    public KeyboardView buildKeyPadView() {
+    public KeyboardView buildKeyboardView() {
         ButtonPadView lView = buildLetterPadView();
         ButtonPadView nView = buildNumberPadView();
         return new KeyboardView.KeyPadViewBuilder(lView, nView).build();
