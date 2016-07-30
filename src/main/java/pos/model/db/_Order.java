@@ -5,6 +5,7 @@ import java.sql.Date;
 public class _Order {
 
     private long id;
+    private long customerId;
     private Date dropDate;
     private Date readyDate;
     private Date pickupDate;
@@ -15,6 +16,14 @@ public class _Order {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public Date getDropDate() {

@@ -33,6 +33,10 @@ public class RootView extends BaseHgrid {
 
     public static class RootViewBuilder {
 
+        public RootViewBuilder() {
+
+        }
+
         public RootView build() {
 
             RootView view = new RootView(this, UIConstraints._40, UIConstraints._60);

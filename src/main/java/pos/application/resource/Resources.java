@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
-import pos.application.ui.UIBuilder;
-import pos.application.ui.views.order.OrderView;
+import pos.application.ui.views.RootView;
+import pos.application.ui.views.builder.ViewBuilder;
+import pos.application.ui.views.order.CurrentOrderView;
 import pos.application.ui.views.search.SearchView;
 import pos.model.application.ItemMenu;
 import pos.model.application.Order;
@@ -20,29 +20,30 @@ import pos.model.application.Order;
 public class Resources {
 
     // Attach rootPane to the JavaFX Scene and add other panes to this root.
-    private StackPane root = new StackPane();
-    private OrderView orderView;
+    private CurrentOrderView orderView;
+    private RootView rootView;
     private SearchView<Order> orderSearchView;
 
     @Autowired
     private POSCart cart;
 
     @Autowired
-    private UIBuilder uiBuilder;
+    private ViewBuilder viewBuilder;
 
     public void initializeUI() {
-        this.orderView = this.uiBuilder.buildOrderView(this.cart);
-        this.orderSearchView = this.uiBuilder.buildSearchView();
+        this.rootView = new RootView.RootViewBuilder().build();
 
-        this.root.getChildren().add(this.orderView);
+        // Move this to another component
+        this.rootView.setLeftView(viewBuilder.buildCurrentOrderView(this.cart));
+        this.rootView.setRightView(viewBuilder.buildItemMenuView());
     }
 
     public TextField getInputField() {
         return this.orderSearchView.getInputField();
     }
 
-    public StackPane getRootPane() {
-        return this.root;
+    public RootView getRootView() {
+        return this.rootView;
     }
 
     public POSCart getCart() {
@@ -50,6 +51,5 @@ public class Resources {
     }
 
     public void changeItemMenuButtonsView(List<ItemMenu> itemMenuList) {
-        this.orderView.changeItemMenuButtonsView(this.uiBuilder.buildItemMenuButtonPadView(itemMenuList));
     }
 }

@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import pos.application.ui.UIConstraints;
 import pos.application.ui.action.ButtonActions;
 import pos.application.ui.button.ItemMenuButton;
-import pos.application.ui.views.BaseVgrid;
 import pos.application.ui.views.input.ButtonPadView;
 import pos.application.ui.views.order.ItemMenuView;
 import pos.model.application.ItemMenu;
@@ -27,13 +25,6 @@ public class ItemMenuViewBuilder {
 
     public ItemMenuView buildItemMenuView() {
         return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonPadView(), this.buildMenuOptionsButtonPadView()).build();
-    }
-
-    public BaseVgrid buildItemMenuView(boolean hello) {
-        BaseVgrid view = new BaseVgrid(UIConstraints._55, UIConstraints._45);
-        view.add(this.buildItemMenuButtonPadView(), 0, 0);
-        view.add(this.buildMenuOptionsButtonPadView(), 0, 1);
-        return view;
     }
 
     private ButtonPadView buildItemMenuButtonPadView() {

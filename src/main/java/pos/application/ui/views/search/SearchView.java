@@ -3,12 +3,12 @@ package pos.application.ui.views.search;
 import javafx.scene.control.TextField;
 import pos.application.ui.UIConstraints;
 import pos.application.ui.views.BaseHgrid;
-import pos.application.ui.views.input.KeyPadView;
+import pos.application.ui.views.input.KeyboardView;
 
 public class SearchView<T> extends BaseHgrid {
 
     private SearchInputResultView<T> searchResultView;
-    private KeyPadView keyPadView;
+    private KeyboardView keyPadView;
 
     public SearchView(SearchViewBuilder<T> builder, double... widths) {
         super(widths);
@@ -21,7 +21,7 @@ public class SearchView<T> extends BaseHgrid {
         return this.searchResultView;
     }
 
-    public KeyPadView getKeyPadView() {
+    public KeyboardView getKeyPadView() {
         return this.keyPadView;
     }
 
@@ -32,9 +32,9 @@ public class SearchView<T> extends BaseHgrid {
     public static class SearchViewBuilder<T> {
 
         private SearchInputResultView<T> searchResultView;
-        private KeyPadView keyPadView;
+        private KeyboardView keyPadView;
 
-        public SearchViewBuilder(SearchInputResultView<T> searchResultView, KeyPadView keyPadView) {
+        public SearchViewBuilder(SearchInputResultView<T> searchResultView, KeyboardView keyPadView) {
             this.searchResultView = searchResultView;
             this.keyPadView = keyPadView;
         }

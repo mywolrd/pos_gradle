@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pos.application.resource.Resources;
@@ -22,9 +21,7 @@ public class MainApplication extends Application {
             resources = ctx.getBean(Resources.class);
             resources.initializeUI();
 
-            Pane root = resources.getRootPane();
-
-            Scene scene = new Scene(root, 1366, 768);
+            Scene scene = new Scene(resources.getRootView(), 1366, 768);
 
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(scene);

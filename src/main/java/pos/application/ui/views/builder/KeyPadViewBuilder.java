@@ -13,7 +13,7 @@ import javafx.scene.input.KeyCode;
 import pos.application.ui.UIConstants;
 import pos.application.ui.action.ButtonActions;
 import pos.application.ui.views.input.ButtonPadView;
-import pos.application.ui.views.input.KeyPadView;
+import pos.application.ui.views.input.KeyboardView;
 
 @Component
 public class KeyPadViewBuilder {
@@ -21,10 +21,10 @@ public class KeyPadViewBuilder {
     @Autowired
     private ButtonActions buttonActions;
 
-    public KeyPadView buildKeyPadView() {
+    public KeyboardView buildKeyPadView() {
         ButtonPadView lView = buildLetterPadView();
         ButtonPadView nView = buildNumberPadView();
-        return new KeyPadView.KeyPadViewBuilder(lView, nView).build();
+        return new KeyboardView.KeyPadViewBuilder(lView, nView).build();
     }
 
     private ButtonPadView buildLetterPadView() {

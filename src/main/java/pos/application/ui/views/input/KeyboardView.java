@@ -4,12 +4,12 @@ import pos.application.ui.UIConstants;
 import pos.application.ui.UIConstraints;
 import pos.application.ui.views.BaseVgrid;
 
-public class KeyPadView extends BaseVgrid {
+public class KeyboardView extends BaseVgrid {
 
     private ButtonPadView letterPadView;
     private ButtonPadView numberPadView;
 
-    private KeyPadView(KeyPadViewBuilder builder, double... heights) {
+    private KeyboardView(KeyPadViewBuilder builder, double... heights) {
         super(heights);
 
         this.letterPadView = builder.letterPadView;
@@ -33,8 +33,8 @@ public class KeyPadView extends BaseVgrid {
             this.numberPadView = numberPadView;
         }
 
-        public KeyPadView build() {
-            KeyPadView view = new KeyPadView(this, UIConstraints._70, UIConstraints._30);
+        public KeyboardView build() {
+            KeyboardView view = new KeyboardView(this, UIConstraints._70, UIConstraints._30);
 
             view.setHgap(UIConstants.GAP_BUTTONS);
             view.setVgap(50f);
