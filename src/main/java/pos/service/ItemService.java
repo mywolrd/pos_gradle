@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pos.dao.ItemDao;
 import pos.model.application.Item;
@@ -16,6 +17,7 @@ public class ItemService {
     @Autowired
     private ItemDao itemDao;
 
+    @Transactional(readOnly = true)
     public List<Item> listItems() {
         return ModelConversionUtils._transformFromdbModel(itemDao.listItems());
     }
