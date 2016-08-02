@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pos.dao.ItemDao;
 import pos.model.application.Item;
-import pos.utils.ModelConversionUtils;
 
 @Service
 public class ItemService {
@@ -19,7 +18,7 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public List<Item> listItems() {
-        return ModelConversionUtils._transformFromdbModel(itemDao.listItems());
+        return itemDao.listItems();
     }
 
     public List<Item> listActiveItems() {
