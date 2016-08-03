@@ -3,11 +3,10 @@
  */
 package pos.javafx.application.ui.views;
 
-import javafx.scene.layout.GridPane;
 import pos.javafx.application.ui.UIConstants;
 import pos.javafx.application.ui.UIConstraints;
 
-public class BaseVgrid extends GridPane {
+public class BaseVgrid extends BaseGrid {
 
     public BaseVgrid(double... heights) {
         super();
