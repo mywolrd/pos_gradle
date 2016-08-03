@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import pos.dao.OrderDetailsDao;
-import pos.model.db._OrderDetails;
+import pos.model.application.OrderDetails;
 
 @Repository
 public class JdbcOrderDetailsDao extends JdbcBaseDao implements OrderDetailsDao {
@@ -17,32 +17,32 @@ public class JdbcOrderDetailsDao extends JdbcBaseDao implements OrderDetailsDao 
     private final static String uniqueById = "SELECT * from ORDER_DETAILS where ORDER_DETAILS.id = :id";
 
     @Override
-    public _OrderDetails uniqueById(long id) {
+    public OrderDetails uniqueById(long id) {
         SqlParameterSource parameter = new MapSqlParameterSource().addValue(DBNames.ID, id);
         try {
-            return this.namedParameterJdbcTemplate.queryForObject(uniqueById, parameter, new BeanPropertyRowMapper<>(_OrderDetails.class));
+            return this.namedParameterJdbcTemplate.queryForObject(uniqueById, parameter, new BeanPropertyRowMapper<>(OrderDetails.class));
         } catch (DataAccessException e) {
             return null;
         }
     }
 
     @Override
-    public List<_OrderDetails> listByOrderId(long orderId) {
+    public List<OrderDetails> listByOrderId(long orderId) {
         return null;
     }
 
     @Override
-    public void save(_OrderDetails details) {
+    public void save(OrderDetails details) {
 
     }
 
     @Override
-    public void update(_OrderDetails details) {
+    public void update(OrderDetails details) {
 
     }
 
     @Override
-    public void delete(_OrderDetails details) {
+    public void delete(OrderDetails details) {
 
     }
 

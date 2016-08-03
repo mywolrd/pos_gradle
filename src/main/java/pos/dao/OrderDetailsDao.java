@@ -2,18 +2,18 @@ package pos.dao;
 
 import java.util.List;
 
-import pos.model.db._OrderDetails;
+import pos.model.application.OrderDetails;
 
 public interface OrderDetailsDao {
 
-    _OrderDetails uniqueById(long id);
+    OrderDetails uniqueById(long id);
 
-    List<_OrderDetails> listByOrderId(long orderId);
+    List<OrderDetails> listByOrderId(long orderId);
 
-    void save(_OrderDetails details);
+    void save(OrderDetails details);
 
-    void update(_OrderDetails details);
+    void update(OrderDetails details);
 
     // is it required?
-    void delete(_OrderDetails details);
+    void delete(OrderDetails details);
 }

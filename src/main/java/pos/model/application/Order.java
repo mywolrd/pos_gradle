@@ -10,6 +10,7 @@ import pos.utils.Utils;
 public class Order {
 
     private long id;
+    private Customer customer;
     private List<OrderDetails> details;
     private LocalDateTime dropDate;
     private LocalDateTime readyDate;
@@ -22,6 +23,12 @@ public class Order {
         private LocalDateTime dropDate;
         private LocalDateTime readyDate;
         private LocalDateTime pickupDate;
+        private Customer customer;
+
+        public OrderBuilder customer(Customer customer) {
+            this.customer = customer;
+            return this;
+        }
 
         public OrderBuilder details(List<OrderDetails> details) {
             this.details = details;
@@ -54,10 +61,15 @@ public class Order {
         this.dropDate = builder.dropDate;
         this.readyDate = builder.readyDate;
         this.pickupDate = builder.pickupDate;
+        this.customer = builder.customer;
     }
 
     public long getId() {
         return id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public List<OrderDetails> getDetails() {
@@ -97,11 +109,9 @@ public class Order {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((details == null) ? 0 : details.hashCode());
-        result = prime * result
-                + ((dropDate == null) ? 0 : dropDate.hashCode());
+        result = prime * result + ((dropDate == null) ? 0 : dropDate.hashCode());
         result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result
-                + ((readyDate == null) ? 0 : readyDate.hashCode());
+        result = prime * result + ((readyDate == null) ? 0 : readyDate.hashCode());
         return result;
     }
 
@@ -114,9 +124,7 @@ public class Order {
         if (getClass() != obj.getClass())
             return false;
         Order other = (Order) obj;
-        return Objects.equal(this.id, other.id)
-                && Objects.equal(this.details, other.details)
-                && Objects.equal(this.dropDate, other.dropDate)
+        return Objects.equal(this.id, other.id) && Objects.equal(this.details, other.details) && Objects.equal(this.dropDate, other.dropDate)
                 && Objects.equal(this.readyDate, this.readyDate);
     }
 }
