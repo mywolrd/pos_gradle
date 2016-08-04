@@ -17,7 +17,7 @@ public class ButtonActionManager {
         button.setOnAction(buttonActions.menuItemButtonAction(button));
     }
 
-    public void assignKeyPadButtonAction(Button button, Character ch) {
-        button.setOnAction(buttonActions.keyPadButtonAction(button, ch, KeyCode.valueOf(Character.toString(ch))));
+    public void assignKeyboardButtonAction(Button button, Character ch) {
+        button.setOnAction(buttonActions.keyboardButtonAction(button, ch, KeyCode.valueOf(Character.toString(ch))));
     }
 }

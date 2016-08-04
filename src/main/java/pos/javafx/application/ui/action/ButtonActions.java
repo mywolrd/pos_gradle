@@ -31,18 +31,20 @@ public class ButtonActions {
         };
     }
 
-    public EventHandler<ActionEvent> keyPadButtonAction(Button button, final Character ch, final KeyCode code) {
+    public EventHandler<ActionEvent> keyboardButtonAction(Button button, final Character ch, final KeyCode code) {
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
                 String value = Character.toString(ch);
 
-                TextField inputField = resources.getInputField();
-                inputField.positionCaret(inputField.getText().length());
+                TextField inputField = resources.getCurrentInputField();
+                if (null != inputField) {
+                    inputField.positionCaret(inputField.getText().length());
 
-                KeyEvent keyEvent = new KeyEvent(button, inputField, KeyEvent.KEY_TYPED, value, value, code, false, false, false, false);
-                inputField.fireEvent(keyEvent);
+                    KeyEvent keyEvent = new KeyEvent(button, inputField, KeyEvent.KEY_TYPED, value, value, code, false, false, false, false);
+                    inputField.fireEvent(keyEvent);
+                }
             }
         };
     }
