@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javafx.scene.layout.Pane;
 import pos.javafx.application.resource.POSCart;
+import pos.javafx.application.ui.views.customer.NewCustomerView.NewCustomerViewBuilder;
 import pos.javafx.application.ui.views.order.CartView;
 import pos.javafx.application.ui.views.order.CartView.CartViewBuilder;
 import pos.javafx.application.ui.views.order.CurrentOrderView.CurrentOrderViewBuilder;
@@ -28,6 +29,10 @@ public class ViewBuilder {
 
     public Pane buildKeyboardView() {
         return this.keyboardViewBuilder.buildKeyboardView();
+    }
+
+    public Pane buildNewCustomerView() {
+        return new NewCustomerViewBuilder().build();
     }
 
     private CartView buildCartView(POSCart cart) {

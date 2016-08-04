@@ -43,7 +43,7 @@ public class KeyboardViewBuilder {
 
             Button button = new Button();
             button.setText(Character.toString(c));
-            button.setOnAction(buttonActions.keyPadButtonAction(button, c, keyCode));
+            button.setOnAction(buttonActions.keyboardButtonAction(button, c, keyCode));
             buttons.add(button);
         }
 
