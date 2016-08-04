@@ -22,6 +22,7 @@ public class NewCustomerView extends BaseVgrid {
         this.number = builder.number;
     }
 
+    @Override
     public TextField getCurrentTextField() {
         if (this.firstName.isFocused()) {
             return this.firstName;
