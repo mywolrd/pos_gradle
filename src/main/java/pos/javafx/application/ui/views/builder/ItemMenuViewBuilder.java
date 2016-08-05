@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import pos.javafx.application.ui.action.ButtonActions;
+import pos.javafx.application.ui.button.ButtonActions;
 import pos.javafx.application.ui.button.ItemMenuButton;
 import pos.javafx.application.ui.views.input.ButtonPadView;
 import pos.javafx.application.ui.views.order.ItemMenuView;
@@ -24,15 +24,15 @@ public class ItemMenuViewBuilder {
     private MenuService menuService;
 
     public ItemMenuView buildItemMenuView() {
-        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonPadView(), this.buildMenuOptionsButtonPadView()).build();
+        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonsView(), this.buildItemMenuOptionsButtonsView()).build();
     }
 
-    private ButtonPadView buildItemMenuButtonPadView() {
-        return this.buildItemMenuButtonPadView(this.menuService.listItemMenuOptions());
+    private ButtonPadView buildItemMenuButtonsView() {
+        return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
     }
 
-    private ButtonPadView buildMenuOptionsButtonPadView() {
-        return this.buildItemMenuButtonPadView(this.menuService.listItemMenuOptions());
+    private ButtonPadView buildItemMenuOptionsButtonsView() {
+        return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
     }
 
     private ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
@@ -45,7 +45,7 @@ public class ItemMenuViewBuilder {
         return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ButtonPadView buildItemMenuButtonPadView(List<ItemMenu> itemMenuList) {
+    public ButtonPadView buildItemMenuButtonsView(List<ItemMenu> itemMenuList) {
         List<ItemMenuButton> buttons = this.buildItemMenuButtons(itemMenuList);
         return new ButtonPadView.ButtonPadViewBuilder(buttons).build();
     }

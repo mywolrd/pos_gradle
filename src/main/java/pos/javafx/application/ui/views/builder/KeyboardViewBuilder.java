@@ -11,7 +11,7 @@ import com.google.common.primitives.Chars;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import pos.javafx.application.ui.UIConstants;
-import pos.javafx.application.ui.action.ButtonActions;
+import pos.javafx.application.ui.button.ButtonActions;
 import pos.javafx.application.ui.views.input.ButtonPadView;
 import pos.javafx.application.ui.views.input.KeyboardView;
 
