@@ -1,10 +1,11 @@
-package pos.javafx.application.ui.action;
+package pos.javafx.application.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
+import pos.javafx.application.ui.button.ButtonActions;
 import pos.javafx.application.ui.button.ItemMenuButton;
 
 @Component

@@ -1,4 +1,4 @@
-package pos.javafx.application.ui.action;
+package pos.javafx.application.ui.button;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import pos.javafx.application.resource.Resources;
-import pos.javafx.application.ui.button.ItemMenuButton;
 
 @Component
 public class ButtonActions {
 
+    // Need to replace this with something else.
     @Autowired
     private Resources resources;
 
