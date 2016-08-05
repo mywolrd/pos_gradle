@@ -24,14 +24,14 @@ public class ItemMenuViewBuilder {
     private MenuService menuService;
 
     public ItemMenuView buildItemMenuView() {
-        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonsView(), this.buildItemMenuOptionsButtonsView()).build();
+        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonsView(), this.buildItemMenuOptionButtonsView()).build();
     }
 
     private ButtonPadView buildItemMenuButtonsView() {
         return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
     }
 
-    private ButtonPadView buildItemMenuOptionsButtonsView() {
+    private ButtonPadView buildItemMenuOptionButtonsView() {
         return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
     }
 
