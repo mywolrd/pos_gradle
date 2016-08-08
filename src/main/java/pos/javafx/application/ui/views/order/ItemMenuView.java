@@ -3,73 +3,77 @@ package pos.javafx.application.ui.views.order;
 import javafx.scene.layout.StackPane;
 import pos.javafx.application.ui.UIConstants;
 import pos.javafx.application.ui.views.BaseVgrid;
-import pos.javafx.application.ui.views.input.ButtonPadView;
+import pos.javafx.application.ui.views.input.ButtonsView;
 
 public class ItemMenuView extends BaseVgrid {
 
-    private ButtonPadView mainButtonPadView;
-    private ButtonPadView sideButtonPadView;
+    private ButtonsView mainMenuView;
+    private ButtonsView menuOptionView;
 
-    private StackPane _rootButtonPadView;
+    private StackPane _rootButtonsView = new StackPane();
 
-    private ButtonPadView _currentButtonPadView;
-    private ButtonPadView _previousButtonPadView;
+    private ButtonsView _currentMainMenuView;
+    private ButtonsView _previousMainMenuView;
+    private ButtonsView _startingMainMenuView;
+    private ButtonsView _startingMenuOptionView;
 
     private ItemMenuView(ItemMenuViewBuilder builder, double... heights) {
         super(heights);
 
-        this.mainButtonPadView = builder.mainButtonPadView;
-        this.mainButtonPadView.setStyle(UIConstants.STYLE_BLACK);
-        this.sideButtonPadView = builder.sideButtonPadView;
-        this.sideButtonPadView.setStyle(UIConstants.STYLE_BLACK);
+        this.mainMenuView = builder.mainMenuView;
+        this.menuOptionView = builder.menuOptionView;
 
-        this._rootButtonPadView = new StackPane();
-        this._rootButtonPadView.getChildren().add(this.mainButtonPadView);
-        this._rootButtonPadView.setStyle(UIConstants.STYLE_BLUE);
+        this._rootButtonsView.getChildren().add(this.mainMenuView);
 
-        this._currentButtonPadView = this.mainButtonPadView;
-        this._previousButtonPadView = null;
+        this._currentMainMenuView = this.mainMenuView;
+        this._previousMainMenuView = null;
+
+        this._startingMainMenuView = builder.mainMenuView;
+        this._startingMenuOptionView = builder.menuOptionView;
     }
 
-    public ButtonPadView getMainButtonPadView() {
-        return this.mainButtonPadView;
+    public ButtonsView getMainButtonsView() {
+        return this.mainMenuView;
     }
 
-    public ButtonPadView getSideButtonPadView() {
-        return this.sideButtonPadView;
+    public ButtonsView getSideButtonsView() {
+        return this.menuOptionView;
     }
 
-    public void changeMenuButtonsView(ButtonPadView view) {
-        _previousButtonPadView = _currentButtonPadView;
+    public void changeMainMenuView(ButtonsView view) {
+        _previousMainMenuView = _currentMainMenuView;
+        _currentMainMenuView = view;
 
-        _rootButtonPadView.getChildren().remove(_currentButtonPadView);
-
-        _currentButtonPadView = view;
-        _rootButtonPadView.getChildren().add(_currentButtonPadView);
+        _rootButtonsView.getChildren().clear();
+        _rootButtonsView.getChildren().add(_currentMainMenuView);
     }
 
-    public void showPreviousButtonPadView() {
-        this.changeMenuButtonsView(this._previousButtonPadView);
+    public void reset() {
+        _previousMainMenuView = null;
+        _currentMainMenuView = _startingMainMenuView;
+
+        _rootButtonsView.getChildren().clear();
+        _rootButtonsView.getChildren().add(_startingMainMenuView);
     }
 
-    private StackPane getRootButtonPadView() {
-        return this._rootButtonPadView;
+    public void showPreviousMainMenuView() {
+        this.changeMainMenuView(this._previousMainMenuView);
     }
 
     public static class ItemMenuViewBuilder {
-        private ButtonPadView mainButtonPadView;
-        private ButtonPadView sideButtonPadView;
+        private ButtonsView mainMenuView;
+        private ButtonsView menuOptionView;
 
-        public ItemMenuViewBuilder(ButtonPadView mainButtonPadView, ButtonPadView sideButtonPadView) {
-            this.mainButtonPadView = mainButtonPadView;
-            this.sideButtonPadView = sideButtonPadView;
+        public ItemMenuViewBuilder(ButtonsView mainMenuView, ButtonsView menuOptionView) {
+            this.mainMenuView = mainMenuView;
+            this.menuOptionView = menuOptionView;
         }
 
         public ItemMenuView build() {
             ItemMenuView view = new ItemMenuView(this, UIConstants._55, UIConstants._45);
 
-            view.add(view.getRootButtonPadView(), 0, 0);
-            view.add(view.getSideButtonPadView(), 0, 1);
+            view.add(view._rootButtonsView, 0, 0);
+            view.add(view.menuOptionView, 0, 1);
 
             return view;
         }

@@ -9,7 +9,7 @@ import pos.javafx.application.ui.button.ButtonActions;
 import pos.javafx.application.ui.button.ItemMenuButton;
 
 @Component
-public class ButtonActionManager {
+public class ButtonManager {
 
     @Autowired
     private ButtonActions buttonActions;

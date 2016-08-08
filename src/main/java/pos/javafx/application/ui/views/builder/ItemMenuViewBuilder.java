@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import pos.javafx.application.ui.button.ButtonActions;
 import pos.javafx.application.ui.button.ItemMenuButton;
-import pos.javafx.application.ui.views.input.ButtonPadView;
+import pos.javafx.application.ui.views.input.ButtonsView;
 import pos.javafx.application.ui.views.order.ItemMenuView;
 import pos.model.application.ItemMenu;
 import pos.service.MenuService;
@@ -24,15 +24,15 @@ public class ItemMenuViewBuilder {
     private MenuService menuService;
 
     public ItemMenuView buildItemMenuView() {
-        return new ItemMenuView.ItemMenuViewBuilder(this.buildItemMenuButtonsView(), this.buildItemMenuOptionButtonsView()).build();
+        return new ItemMenuView.ItemMenuViewBuilder(this.buildMainMenuView(), this.buildMenuOptionView()).build();
     }
 
-    private ButtonPadView buildItemMenuButtonsView() {
-        return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
+    private ButtonsView buildMainMenuView() {
+        return this.buildMainMenuView(this.menuService.listItemMenuOptions());
     }
 
-    private ButtonPadView buildItemMenuOptionButtonsView() {
-        return this.buildItemMenuButtonsView(this.menuService.listItemMenuOptions());
+    private ButtonsView buildMenuOptionView() {
+        return this.buildMainMenuView(this.menuService.listItemMenuOptions());
     }
 
     private ItemMenuButton buildItemMenuButton(ItemMenu itemMenu) {
@@ -45,9 +45,9 @@ public class ItemMenuViewBuilder {
         return itemMenuList.stream().map(itemMenu -> this.buildItemMenuButton(itemMenu)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ButtonPadView buildItemMenuButtonsView(List<ItemMenu> itemMenuList) {
+    public ButtonsView buildMainMenuView(List<ItemMenu> itemMenuList) {
         List<ItemMenuButton> buttons = this.buildItemMenuButtons(itemMenuList);
-        return new ButtonPadView.ButtonPadViewBuilder(buttons).build();
+        return new ButtonsView.ButtonPadViewBuilder(buttons).build();
     }
 
 }

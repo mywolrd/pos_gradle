@@ -9,7 +9,7 @@ import javafx.scene.layout.GridPane;
 import pos.javafx.application.ui.UIConstants;
 import pos.javafx.application.ui.UIConstraints;
 
-public class ButtonPadView extends GridPane {
+public class ButtonsView extends GridPane {
 
     private List<? extends Button> buttons;
     private double vGap;
@@ -43,7 +43,7 @@ public class ButtonPadView extends GridPane {
         super.layoutChildren();
     }
 
-    private ButtonPadView(ButtonPadViewBuilder builder) {
+    private ButtonsView(ButtonPadViewBuilder builder) {
         this.buttons = builder.buttons;
         this.vGap = builder.vGap;
         this.hGap = builder.hGap;
@@ -76,8 +76,8 @@ public class ButtonPadView extends GridPane {
             return this;
         }
 
-        public ButtonPadView build() {
-            ButtonPadView view = new ButtonPadView(this);
+        public ButtonsView build() {
+            ButtonsView view = new ButtonsView(this);
 
             //@formatter:off
             view.setVgap(view.getVGap());

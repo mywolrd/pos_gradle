@@ -5,8 +5,8 @@ import pos.javafx.application.ui.views.BaseVgrid;
 
 public class KeyboardView extends BaseVgrid {
 
-    private ButtonPadView letterPadView;
-    private ButtonPadView numberPadView;
+    private ButtonsView letterPadView;
+    private ButtonsView numberPadView;
 
     private KeyboardView(KeyPadViewBuilder builder, double... heights) {
         super(heights);
@@ -15,19 +15,19 @@ public class KeyboardView extends BaseVgrid {
         this.numberPadView = builder.numberPadView;
     }
 
-    public ButtonPadView getLetterPadView() {
+    public ButtonsView getLetterPadView() {
         return this.letterPadView;
     }
 
-    public ButtonPadView getNumberPadView() {
+    public ButtonsView getNumberPadView() {
         return this.numberPadView;
     }
 
     public static class KeyPadViewBuilder {
-        private ButtonPadView letterPadView;
-        private ButtonPadView numberPadView;
+        private ButtonsView letterPadView;
+        private ButtonsView numberPadView;
 
-        public KeyPadViewBuilder(ButtonPadView letterPadView, ButtonPadView numberPadView) {
+        public KeyPadViewBuilder(ButtonsView letterPadView, ButtonsView numberPadView) {
             this.letterPadView = letterPadView;
             this.numberPadView = numberPadView;
         }

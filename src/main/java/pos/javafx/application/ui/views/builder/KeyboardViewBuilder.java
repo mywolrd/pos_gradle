@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import pos.javafx.application.ui.UIConstants;
 import pos.javafx.application.ui.button.ButtonActions;
-import pos.javafx.application.ui.views.input.ButtonPadView;
+import pos.javafx.application.ui.views.input.ButtonsView;
 import pos.javafx.application.ui.views.input.KeyboardView;
 
 @Component
@@ -22,17 +22,17 @@ public class KeyboardViewBuilder {
     private ButtonActions buttonActions;
 
     public KeyboardView buildKeyboardView() {
-        ButtonPadView lView = buildLetterPadView();
-        ButtonPadView nView = buildNumberPadView();
+        ButtonsView lView = buildLetterPadView();
+        ButtonsView nView = buildNumberPadView();
         return new KeyboardView.KeyPadViewBuilder(lView, nView).build();
     }
 
-    private ButtonPadView buildLetterPadView() {
-        return new ButtonPadView.ButtonPadViewBuilder(buildButtons(UIConstants.ALPHABETS)).build();
+    private ButtonsView buildLetterPadView() {
+        return new ButtonsView.ButtonPadViewBuilder(buildButtons(UIConstants.ALPHABETS)).build();
     }
 
-    private ButtonPadView buildNumberPadView() {
-        return new ButtonPadView.ButtonPadViewBuilder(buildButtons(UIConstants.NUMBERS)).build();
+    private ButtonsView buildNumberPadView() {
+        return new ButtonsView.ButtonPadViewBuilder(buildButtons(UIConstants.NUMBERS)).build();
     }
 
     private List<Button> buildButtons(char[] chars) {

@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import pos.javafx.application.resource.Resources;
+import pos.javafx.application.utils.ViewManager;
 
 @Component
 public class ButtonActions {
@@ -17,6 +18,9 @@ public class ButtonActions {
     // Need to replace this with something else.
     @Autowired
     private Resources resources;
+
+    @Autowired
+    private ViewManager viewManager;
 
     public EventHandler<ActionEvent> menuItemButtonAction(ItemMenuButton button) {
         return new EventHandler<ActionEvent>() {
