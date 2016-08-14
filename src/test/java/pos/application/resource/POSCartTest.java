@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import pos.javafx.application.resource.POSCart;
+import pos.javafx.application.POSCart;
 import pos.model.application.Item;
 import pos.model.application.Price;
 import pos.utils.TestUtils;

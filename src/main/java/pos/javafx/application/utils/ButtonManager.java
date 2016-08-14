@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
-import pos.javafx.application.ui.button.ButtonActions;
-import pos.javafx.application.ui.button.ItemMenuButton;
+import pos.javafx.application.component.button.ButtonActions;
+import pos.javafx.application.component.button.ItemMenuButton;
 
 @Component
 public class ButtonManager {
